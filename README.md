@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# calaos
 
-## Getting Started
+> A dark-premium design blog. Minimalist, timeless, production-ready.
 
-First, run the development server:
+Built with Next.js 16, TailwindCSS v4, MDX, and deployed on Vercel.
+
+---
+
+## Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 16 (App Router, RSC) |
+| Language | TypeScript |
+| Styling | TailwindCSS v4 + CSS Custom Properties |
+| Content | MDX (file-based, Git-versioned) |
+| UI | shadcn/ui (headless, copy-paste) |
+| Animations | Framer Motion |
+| Dark Mode | next-themes (system + manual toggle) |
+| Syntax Highlighting | rehype-pretty-code + shiki |
+| Comments | Giscus (GitHub Discussions) |
+| Newsletter | Resend |
+| Hosting | Vercel |
+| CI/CD | GitHub Actions |
+
+---
+
+## Quick Start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Install dependencies
+pnpm install
+
+# Copy environment variables
+cp .env.example .env.local
+
+# Start development server
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Writing Posts
 
-## Learn More
+Create `.mdx` files in `src/content/posts/`. Each file needs this frontmatter:
 
-To learn more about Next.js, take a look at the following resources:
+```mdx
+---
+title: "Post Title"
+description: "One-sentence description for SEO and previews."
+date: "2024-01-15"
+tags: ["design", "typography"]
+published: true
+featured: false
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Your content here...
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The filename becomes the URL slug: `my-post.mdx` → `calaos.io/my-post`.
 
-## Deploy on Vercel
+### Custom MDX Components
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```mdx
+<Callout type="info" title="Optional title">
+  Content here.
+</Callout>
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Types: `info` | `warning` | `success` | `error`
+
+---
+
+## Environment Variables
+
+See [.env.example](.env.example) for all required variables.
+
+| Variable | Required | Description |
+|---|---|---|
+| `NEXT_PUBLIC_SITE_URL` | Yes | Production URL |
+| `RESEND_API_KEY` | For newsletter | Resend API key |
+| `RESEND_AUDIENCE_ID` | For newsletter | Resend audience ID |
+| `NEXT_PUBLIC_GISCUS_REPO` | For comments | `owner/repo` |
+| `NEXT_PUBLIC_GISCUS_REPO_ID` | For comments | From giscus.app |
+| `NEXT_PUBLIC_GISCUS_CATEGORY_ID` | For comments | From giscus.app |
+
+---
+
+## Scripts
+
+```bash
+pnpm dev          # Start dev server
+pnpm build        # Production build
+pnpm start        # Start production server
+pnpm lint         # Run ESLint
+pnpm type-check   # Run TypeScript checks
+pnpm format       # Format with Prettier
+```
+
+---
+
+## Documentation
+
+- [ARCHITECTURE.md](ARCHITECTURE.md) — System architecture, design decisions
+- [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md) — Color tokens, typography, spacing
+- [CONTRIBUTING.md](CONTRIBUTING.md) — Branch strategy, commit conventions
+- [DEPLOYMENT.md](DEPLOYMENT.md) — Vercel setup, custom domain, CI/CD

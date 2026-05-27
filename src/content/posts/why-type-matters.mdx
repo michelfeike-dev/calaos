@@ -1,0 +1,90 @@
+---
+title: "Why Type Matters"
+description: "Typography is not decoration. It is the primary carrier of meaning in most digital interfaces — and it is almost always underinvested."
+date: "2024-01-01"
+tags: ["typography", "craft"]
+published: true
+featured: false
+---
+
+There's a classic exercise in typography education: take a well-designed piece and replace the typeface with something generic — Arial, say, or Times New Roman. Then ask whether the design still communicates the same thing.
+
+It doesn't. The voice is gone. What remains is information without character.
+
+This is what type does. It is not the neutral carrier of content. It *is* the content, in a fundamental way that color and layout can only amplify or diminish.
+
+## Reading vs. Seeing
+
+Most people read text, but they *see* typography.
+
+Reading is the extraction of meaning from glyphs. It's a cognitive process that good typography makes effortless and bad typography makes laborious. Line length, leading, contrast — these are engineering problems with measurable solutions.
+
+Seeing is different. When you notice a typeface, you're perceiving its *character* before you parse its content. The angular geometry of a grotesque sans. The bracketed serifs of a transitional roman. The tension in a display face that almost can't hold itself together at large sizes.
+
+This dual channel — reading and seeing — is why type is so powerful. It communicates at two layers simultaneously: semantic (what the words say) and aesthetic (how the saying feels).
+
+## The Wrong Default
+
+Most digital products default to system fonts or generic web-safe choices because it's safe. Nothing will look bad. Nothing will look like a mistake.
+
+Nothing will look like anything.
+
+The problem with safe choices in type isn't ugliness — it's neutrality. A generic typeface says nothing about the brand, the content, or the relationship with the reader. It outsources the first impression to infrastructure.
+
+Compare this to a considered choice: a slightly unusual serif for a publication, a humanist sans for a productivity tool, a geometric display face for a creative agency. Each of these makes an argument. The argument might be right or wrong, but it's *present*.
+
+Presence is more valuable than safety.
+
+## Scale and Weight as Syntax
+
+Before a reader processes a single word, they process hierarchy.
+
+Large means important. Bold means emphasis. Small and muted means footnote. These aren't learned conventions — they're perceptual primitives that map to our experience of physical objects in space. The mountain is more important than the pebble.
+
+Good typographic hierarchy exploits this. It creates a reading path: what to see first, what comes next, what is supporting detail.
+
+The failure mode is compression — giving everything the same weight so that nothing is emphasized, and the reader has to do the work of finding the hierarchy themselves.
+
+```css
+/* Too compressed — everything fights for attention */
+h1 { font-size: 24px; font-weight: 600; }
+h2 { font-size: 20px; font-weight: 600; }
+h3 { font-size: 18px; font-weight: 600; }
+body { font-size: 16px; font-weight: 400; }
+
+/* Contrast that creates a reading path */
+h1 { font-size: 48px; font-weight: 400; letter-spacing: -0.02em; }
+h2 { font-size: 28px; font-weight: 500; }
+h3 { font-size: 18px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+body { font-size: 17px; font-weight: 400; line-height: 1.75; }
+```
+
+The second set uses four different axes of variation: size, weight, letter-spacing, and case. They're not the same voice at different volumes — they're different registers.
+
+## The Measure Problem
+
+The optimal line length for comfortable reading is 45–75 characters (including spaces). This is well-documented and consistently ignored.
+
+On large screens, text without a maximum width will often run to 120+ characters per line. The reader has to return the eye across a long distance, creating fatigue and losing their place.
+
+The fix is trivially simple. `max-width: 65ch` on prose content. And yet the problem is endemic because developers think in pixels and design tools make it easy to make things wide.
+
+<Callout type="success" title="The 65ch Rule">
+  Setting `max-width: 65ch` on your article container is the single highest-leverage typographic intervention available to most products. It costs nothing and improves readability measurably.
+</Callout>
+
+## Type as Tone
+
+There is a typeface that is correct for every context. Not in a prescriptive, rules-based way — but in the sense that the type choice and the content should be in agreement.
+
+A medical information site in a display face with tight tracking feels alarming. A children's learning app in a condensed grotesque feels hostile. A legal contract in a quirky hand-lettered style feels fraudulent.
+
+These examples are obvious. The harder cases are the middle ground — where the type isn't *wrong*, it's just *off*. Slightly too formal for the context. Slightly too casual for the audience. Slightly too modern for a brand that wants to communicate heritage.
+
+Getting this right requires reading both the content and its audience, then finding the typeface that puts them in the same room without friction.
+
+---
+
+Typography is not a finishing touch. It's not the thing you figure out after layout and color. It's the substrate — the material the whole design runs on.
+
+When it's right, you don't notice it. That's the target. The type disappears, and the meaning comes through clean.
