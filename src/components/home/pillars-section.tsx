@@ -17,9 +17,9 @@ interface PillarsSectionProps {
 
 export function PillarsSection({ cta, border = false }: PillarsSectionProps) {
   return (
-    <section className={border ? 'border-t border-white/[0.06] py-24 sm:py-32' : 'py-24 sm:py-32'}>
-      <div className="mx-auto max-w-5xl px-8">
-        <div className="grid grid-cols-1 gap-16 sm:grid-cols-3 sm:gap-8">
+    <section className={border ? 'border-t border-white/[0.06] py-12 sm:py-32' : 'py-12 sm:py-32'}>
+      <div className="mx-auto max-w-5xl px-6 sm:px-8">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-8">
           {pillars.map(({ src, alt, sub }, i) => (
             <motion.div
               key={alt}
@@ -39,7 +39,7 @@ export function PillarsSection({ cta, border = false }: PillarsSectionProps) {
 
         {cta && (
           <motion.div
-            className="mt-16 flex flex-col items-center"
+            className="mt-10 flex flex-col items-center sm:mt-16"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: '-80px' }}
@@ -47,7 +47,7 @@ export function PillarsSection({ cta, border = false }: PillarsSectionProps) {
           >
             <a
               href={cta.href}
-              className="text-center text-sm text-white/40 transition-colors duration-150 hover:text-blue-400"
+              className="text-center text-base text-white/40 transition-colors duration-150 hover:text-blue-400 sm:text-sm"
             >
               {cta.text}
             </a>
