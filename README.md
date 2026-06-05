@@ -169,8 +169,36 @@ See [.env.example](.env.example) for all required variables.
 | `NEXT_PUBLIC_SITE_URL` | Yes | Production URL (e.g. `https://calaos.me`) |
 | `RESEND_API_KEY` | For newsletter | Resend API key |
 | `RESEND_AUDIENCE_ID` | For newsletter | Resend audience ID |
+| `NEWSLETTER_SECRET` | For newsletter | Long random string — signs confirm/unsubscribe tokens |
+| `NEWSLETTER_FROM` | For newsletter | Verified Resend sender, e.g. `calaos <newsletter@calaos.me>` |
 
-> The newsletter API route returns `503` gracefully when the Resend variables are absent, so the site builds and runs without them.
+> The newsletter API returns `503` gracefully when these variables are absent, so the site builds and runs without them.
+
+### Newsletter (Double-Opt-In + Unsubscribe)
+
+Subscription is **stateless** — Resend is the only system of record. No database.
+
+**Subscribe (DOI):** `POST /api/newsletter` validates the email (origin check, honeypot,
+rate limit), then emails an HMAC-signed confirmation link. The contact is created in
+Resend only after the user clicks `GET /api/newsletter/confirm?token=…` (token valid 24 h).
+Re-subscribing a previously unsubscribed contact is handled via upsert.
+
+**Unsubscribe:** two coexisting mechanisms —
+1. **Resend-managed (primary, legal):** send newsletters as **Resend Broadcasts** and put
+   `{{{RESEND_UNSUBSCRIBE_URL}}}` in the footer. Resend hosts the unsubscribe page and sets
+   `List-Unsubscribe` / one-click (RFC 8058) headers automatically.
+2. **Branded endpoint:** `GET /api/newsletter/unsubscribe?token=…` (built via the
+   `unsubscribeUrl(email)` helper in [`src/lib/newsletter.ts`](src/lib/newsletter.ts)).
+   **Unsubscribe tokens never expire** — a user must be able to opt out from an old email
+   at any time (DSGVO Art. 7(3)).
+
+> **Limitation (by design):** there is no durable consent ledger — the project has no
+> persistence layer. Consent proof relies on the DOI confirmation + Resend's contact
+> timestamp. The signed token carries the consent timestamp and version.
+
+> **Prerequisite:** sending requires a **verified Resend domain** (`calaos.me`) and
+> `NEWSLETTER_FROM`. Newsletter broadcasts (the sending side) are operated in Resend and
+> are not part of the app code.
 
 ---
 
@@ -182,6 +210,8 @@ pnpm build             # Production build
 pnpm start             # Start production server
 pnpm lint              # Run ESLint
 pnpm type-check        # Run TypeScript checks
+pnpm test              # Run Vitest (unit + API integration)
+pnpm test:watch        # Vitest in watch mode
 pnpm format            # Format with Prettier
 pnpm format:check      # Check formatting without writing
 pnpm generate:favicon  # Regenerate favicon.ico from public/icon.svg
@@ -200,13 +230,14 @@ to rebuild `src/app/favicon.ico` (16/32/48 px, embedded PNGs — Safari-compatib
 Before every commit / deploy, run the full suite (this is also what CI enforces):
 
 ```bash
-pnpm lint && pnpm type-check && pnpm build
+pnpm lint && pnpm type-check && pnpm test && pnpm build
 ```
 
 | Step | What it catches |
 |---|---|
 | `pnpm lint` | ESLint + Next.js rules (unescaped entities, `<a>` vs `<Link>`, image hints) |
 | `pnpm type-check` | `tsc --noEmit` — full type safety |
+| `pnpm test` | Vitest — newsletter token/validation/CSRF/rate-limit + API route integration |
 | `pnpm build` | Production build + static generation of all routes |
 
 A green build statically prerenders all content routes (`/`, `/blog`, `/about`,

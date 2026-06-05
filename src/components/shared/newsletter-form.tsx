@@ -5,27 +5,44 @@ import { cn } from '@/lib/utils'
 
 type Status = 'idle' | 'loading' | 'success' | 'error'
 
-export function NewsletterForm({ className }: { className?: string }) {
+/** Status passed from the page after a confirm/unsubscribe redirect. */
+export type InitialStatus = 'confirmed' | 'unsubscribed' | 'invalid'
+
+const INITIAL: Record<InitialStatus, { status: Status; message: string }> = {
+  confirmed: { status: 'success', message: 'Deine Anmeldung ist bestätigt. Willkommen.' },
+  unsubscribed: { status: 'success', message: 'Du wurdest abgemeldet. Alles Gute.' },
+  invalid: { status: 'error', message: 'Der Link ist ungültig oder abgelaufen.' },
+}
+
+interface NewsletterFormProps {
+  className?: string
+  initialStatus?: InitialStatus
+}
+
+export function NewsletterForm({ className, initialStatus }: NewsletterFormProps) {
+  const seed = initialStatus ? INITIAL[initialStatus] : null
   const [email, setEmail] = useState('')
-  const [status, setStatus] = useState<Status>('idle')
-  const [message, setMessage] = useState('')
+  const [status, setStatus] = useState<Status>(seed?.status ?? 'idle')
+  const [message, setMessage] = useState(seed?.message ?? '')
+  // Honeypot — must stay empty; bots that auto-fill all fields will trip it.
+  const [website, setWebsite] = useState('')
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (!email) return
+    if (!email || status === 'loading') return
 
     setStatus('loading')
     try {
       const res = await fetch('/api/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, website }),
       })
-      const data = await res.json() as { message?: string; error?: string }
+      const data = (await res.json()) as { message?: string; error?: string }
 
       if (res.ok) {
         setStatus('success')
-        setMessage(data.message ?? 'Willkommen. Bis bald.')
+        setMessage(data.message ?? 'Fast geschafft — bestätige den Link in deiner E-Mail.')
         setEmail('')
       } else {
         setStatus('error')
@@ -58,6 +75,17 @@ export function NewsletterForm({ className }: { className?: string }) {
         <p className="text-sm text-blue-400">{message}</p>
       ) : (
         <form onSubmit={handleSubmit} className="flex gap-2">
+          {/* Honeypot — visually hidden, never shown to real users */}
+          <input
+            type="text"
+            name="website"
+            value={website}
+            onChange={(e) => setWebsite(e.target.value)}
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            hidden
+          />
           <input
             type="email"
             value={email}

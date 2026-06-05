@@ -40,6 +40,11 @@ jobs:
       - name: Lint
         run: pnpm lint
 
+      - name: Test
+        run: pnpm test
+        env:
+          NEWSLETTER_SECRET: ci-test-secret
+
       - name: Build
         run: pnpm build
         env:
