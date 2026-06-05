@@ -13,12 +13,14 @@ const securityHeaders = [
     value: [
       "default-src 'self'",
       // unsafe-eval nur im Dev-Modus (React DevTools benötigen eval())
-      `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''} https://giscus.app`,
+      // va.vercel-scripts.com: Vercel Web Analytics
+      `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''} https://va.vercel-scripts.com`,
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: https:",
       "font-src 'self'",
-      "frame-src https://giscus.app",
-      "connect-src 'self' https://giscus.app https://api.resend.com",
+      "frame-src 'none'",
+      // Vercel Analytics sendet Beacons an die eigene Domain (/_vercel/insights)
+      "connect-src 'self' https://api.resend.com",
       "form-action 'self'",
       "object-src 'none'",
       "base-uri 'self'",

@@ -96,7 +96,36 @@ export default function DatenschutzPage() {
           i.&nbsp;V.&nbsp;m. § 25 Abs.&nbsp;2 Nr.&nbsp;2 TDDDG.
         </p>
 
-        <h2>5. Newsletter</h2>
+        <h2>5. Web-Analyse (Vercel Web Analytics)</h2>
+        <p>
+          Zur Reichweitenmessung nutze ich Vercel Web Analytics, einen Dienst der
+          Vercel Inc., 440 N Barranca Ave #4133, Covina, CA&nbsp;91723, USA. Erfasst
+          werden ausschließlich aggregierte, anonyme Nutzungsdaten (z.&nbsp;B.
+          aufgerufene Seiten, ungefähre Herkunftsregion, Gerätetyp, Referrer).
+        </p>
+        <p>
+          Vercel Web Analytics arbeitet <strong>cookielos</strong> und legt keine
+          geräteübergreifenden Nutzerprofile an. Es werden keine IP-Adressen dauerhaft
+          gespeichert und keine personenbezogenen Identifikatoren gebildet; eine
+          Wiedererkennung einzelner Besucher findet nicht statt.
+        </p>
+        <p>
+          <strong>Rechtsgrundlage:</strong> Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO
+          (berechtigtes Interesse an einer statistischen, datensparsamen Auswertung der
+          Websitenutzung). Da keine Endgeräte-Informationen im Sinne des § 25 TDDDG
+          gespeichert oder ausgelesen werden, ist keine Einwilligung erforderlich.
+          Weitere Informationen findest du in der{' '}
+          <a
+            href="https://vercel.com/legal/privacy-policy"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Datenschutzerklärung von Vercel
+          </a>
+          .
+        </p>
+
+        <h2>6. Newsletter</h2>
         <p>
           Wenn du meinen Newsletter abonnierst, verarbeite ich deine E-Mail-Adresse
           ausschließlich zum Zweck des regelmäßigen Versands redaktioneller Inhalte.
@@ -128,7 +157,7 @@ export default function DatenschutzPage() {
           unberührt.
         </p>
 
-        <h2>6. Schriftarten</h2>
+        <h2>7. Schriftarten</h2>
         <p>
           Diese Website verwendet ausschließlich lokal auf dem Server gehostete
           Schriftarten. Es wird keine Verbindung zu externen Schriftartendiensten
@@ -136,7 +165,7 @@ export default function DatenschutzPage() {
           werden.
         </p>
 
-        <h2>7. Datenübermittlung in Drittländer</h2>
+        <h2>8. Datenübermittlung in Drittländer</h2>
         <p>
           Eine Übermittlung personenbezogener Daten in Drittländer außerhalb der EU/des
           EWR erfolgt ausschließlich, wenn hierfür geeignete Garantien bestehen. Die von
@@ -145,7 +174,7 @@ export default function DatenschutzPage() {
           die Datenübermittlung auf einer rechtlich gesicherten Grundlage erfolgt.
         </p>
 
-        <h2>8. Rechte der betroffenen Personen</h2>
+        <h2>9. Rechte der betroffenen Personen</h2>
         <p>Dir stehen gemäß DSGVO folgende Rechte zu:</p>
         <ul>
           <li>Auskunft über deine gespeicherten Daten (Art.&nbsp;15 DSGVO)</li>
@@ -171,7 +200,7 @@ export default function DatenschutzPage() {
           E-Mail-Adresse.
         </p>
 
-        <h2>9. Speicherdauer</h2>
+        <h2>10. Speicherdauer</h2>
         <p>
           Ich speichere personenbezogene Daten nur so lange, wie es für den jeweiligen
           Verarbeitungszweck erforderlich ist oder gesetzliche Aufbewahrungspflichten
@@ -179,14 +208,14 @@ export default function DatenschutzPage() {
           gesperrt.
         </p>
 
-        <h2>10. Datensicherheit</h2>
+        <h2>11. Datensicherheit</h2>
         <p>
           Ich setze technische und organisatorische Sicherheitsmaßnahmen ein, um deine
           Daten gegen Verlust, Zerstörung, Manipulation und unbefugten Zugriff zu
           schützen. Die Übertragung erfolgt stets verschlüsselt via TLS/HTTPS.
         </p>
 
-        <h2>11. Aktualität dieser Datenschutzerklärung</h2>
+        <h2>12. Aktualität dieser Datenschutzerklärung</h2>
         <p>
           Stand: Juni 2026. Ich behalte mir vor, diese Erklärung bei Änderungen der
           Website oder neuen rechtlichen Anforderungen zu aktualisieren. Die jeweils
