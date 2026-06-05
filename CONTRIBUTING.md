@@ -78,7 +78,7 @@ pnpm dev
 1. Create `src/content/posts/your-slug.mdx`
 2. Fill in frontmatter (all fields required except `featured` and `coverImage`)
 3. Write content in MDX
-4. Test locally: `pnpm dev`
+4. Test locally: `pnpm dev`k
 5. Open PR to `main` with type `content:`
 
 ---

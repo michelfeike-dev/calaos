@@ -1,41 +1,37 @@
 import type { Metadata } from 'next'
+import { getPostBySlug } from '@/lib/posts'
+import { compileMdxContent } from '@/lib/mdx'
+import { getMdxComponents } from '@/components/mdx/mdx-components'
+import { PostHeader } from '@/components/blog/post-header'
+import { NewsletterForm } from '@/components/shared/newsletter-form'
+import { notFound } from 'next/navigation'
 
 export const metadata: Metadata = {
-  title: 'About',
-  description: 'A blog about visual design, creative process, and the details that matter.',
+  title: 'about',
+  description: 'Michel teilt seine Reise von chaotischer Kindheit in Bayern über Berlin-Partys zur authentischen Freiheit.',
 }
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const post = getPostBySlug('vom-jungen-zur-freiheit')
+  if (!post) notFound()
+
+  const { content } = await compileMdxContent(post.content, getMdxComponents())
+
   return (
-    <div className="mx-auto max-w-3xl px-6 py-16">
-      <article className="prose">
-        <h1>About</h1>
+    <div className="mx-auto max-w-3xl px-6 py-24 sm:py-32">
+      <PostHeader post={post} />
+      <div className="prose">{content}</div>
 
-        <p>
-          calaos is a place for writing about visual design, creative process, and
-          the small decisions that define the quality of what we make.
-        </p>
+      <NewsletterForm className="mt-20" />
 
-        <p>
-          The focus is on craft — the kind of attention to detail that separates
-          something good from something great. Typography, spacing, interaction,
-          system thinking, and the invisible work that makes things feel right.
-        </p>
-
-        <p>
-          Writing is a way of thinking. These posts are part observation, part
-          argument, part note to self.
-        </p>
-
-        <hr />
-
-        <h2>Get in touch</h2>
-
-        <p>
-          If something resonated, disagreed with you, or you just want to talk
-          design — feel free to reach out.
-        </p>
-      </article>
+      <div className="mt-20 border-t border-white/[0.06] pt-10 text-center">
+        <a
+          href="mailto:blog@calaos.me"
+          className="text-sm text-white/30 transition-colors duration-150 hover:text-blue-400"
+        >
+          Gedanken dazu? Schreib mir.
+        </a>
+      </div>
     </div>
   )
 }

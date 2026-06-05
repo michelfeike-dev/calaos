@@ -43,5 +43,5 @@ jobs:
       - name: Build
         run: pnpm build
         env:
-          NEXT_PUBLIC_SITE_URL: https://calaos.io
+          NEXT_PUBLIC_SITE_URL: https://calaos.me
           # Newsletter + Giscus not needed for build

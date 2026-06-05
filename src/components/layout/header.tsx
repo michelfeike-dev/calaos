@@ -2,52 +2,53 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { ThemeToggle } from '@/components/shared/theme-toggle'
+import { CalaosLogo } from '@/components/shared/calaos-logo'
 import { cn } from '@/lib/utils'
-
-const NAV_LINKS = [
-  { href: '/', label: 'Blog' },
-  { href: '/about', label: 'About' },
-]
 
 export function Header() {
   const pathname = usePathname()
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--bg-base)]/80 backdrop-blur-sm">
-      <div className="mx-auto flex h-14 max-w-3xl items-center justify-between px-6">
-        {/* Wordmark */}
-        <Link
-          href="/"
-          className="font-display text-base font-medium tracking-tight text-[var(--text-primary)] transition-opacity duration-150 hover:opacity-70"
-        >
-          calaos
-        </Link>
+    <header className="fixed top-4 left-1/2 z-50 w-[calc(100%-2rem)] max-w-5xl -translate-x-1/2">
+      <div className="grid h-14 grid-cols-3 items-center rounded-2xl border border-white/[0.08] bg-[#1c1c1c]/75 px-6 shadow-[0_4px_24px_rgba(0,0,0,0.4)] backdrop-blur-xl">
 
-        {/* Nav + Toggle */}
-        <div className="flex items-center gap-1">
-          <nav className="flex items-center">
-            {NAV_LINKS.map(({ href, label }) => {
-              const isActive =
-                href === '/' ? pathname === href : pathname.startsWith(href)
-              return (
-                <Link
-                  key={href}
-                  href={href}
-                  className={cn(
-                    'rounded-md px-3 py-1.5 text-sm transition-colors duration-150',
-                    isActive
-                      ? 'text-[var(--text-primary)]'
-                      : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'
-                  )}
-                >
-                  {label}
-                </Link>
-              )
-            })}
-          </nav>
-          <ThemeToggle />
+        {/* Left — blog */}
+        <div className="flex items-center">
+          <Link
+            href="/blog"
+            className={cn(
+              'text-sm font-medium tracking-wide transition-colors duration-150',
+              pathname === '/blog' || pathname.startsWith('/tag/')
+                ? 'text-white'
+                : 'text-white/40 hover:text-blue-400'
+            )}
+          >
+            blog
+          </Link>
         </div>
+
+        {/* Center — Logo */}
+        <div className="flex items-center justify-center">
+          <Link href="/" className="group cursor-pointer">
+            <CalaosLogo className="h-8 w-auto" />
+          </Link>
+        </div>
+
+        {/* Right — coach */}
+        <div className="flex items-center justify-end">
+          <Link
+            href="/coach"
+            className={cn(
+              'text-sm font-medium tracking-wide transition-colors duration-150',
+              pathname === '/coach'
+                ? 'text-white'
+                : 'text-white/40 hover:text-blue-400'
+            )}
+          >
+            coach
+          </Link>
+        </div>
+
       </div>
     </header>
   )

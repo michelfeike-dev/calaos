@@ -1,12 +1,10 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getAllPosts, getPostBySlug, getRelatedPosts } from '@/lib/posts'
-import { compileMdxContent, extractToc } from '@/lib/mdx'
+import { compileMdxContent } from '@/lib/mdx'
 import { getMdxComponents } from '@/components/mdx/mdx-components'
 import { PostHeader } from '@/components/blog/post-header'
 import { PostCard } from '@/components/blog/post-card'
-import { TableOfContents } from '@/components/blog/table-of-contents'
-import { GiscusComments } from '@/components/shared/giscus-comments'
 import { NewsletterForm } from '@/components/shared/newsletter-form'
 import { absoluteUrl } from '@/lib/utils'
 
@@ -61,8 +59,6 @@ export default async function PostPage({ params }: Props) {
     Promise.resolve(getRelatedPosts(slug, post.tags)),
   ])
 
-  const tocItems = extractToc(post.content)
-
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -89,49 +85,39 @@ export default async function PostPage({ params }: Props) {
       />
 
       <div className="mx-auto max-w-3xl px-6 py-16">
-        <div className="xl:relative">
-          {/* Sticky TOC on wide screens */}
-          {tocItems.length > 0 && (
-            <aside className="absolute left-full top-0 ml-10 hidden w-56 xl:block">
-              <div className="sticky top-24">
-                <TableOfContents items={tocItems} />
+        <article>
+          <PostHeader post={post} />
+          <div className="prose">{content}</div>
+
+          {/* Newsletter CTA */}
+          <NewsletterForm className="mt-20" />
+
+          {/* Related posts */}
+          {relatedPosts.length > 0 && (
+            <section className="mt-20">
+              <h2 className="mb-6 text-xs font-semibold uppercase tracking-widest text-white/30">
+                Weitere Artikel
+              </h2>
+              <div className="flex flex-col gap-3">
+                {relatedPosts.map((p) => (
+                  <PostCard key={p.slug} post={p} />
+                ))}
               </div>
-            </aside>
+            </section>
           )}
 
-          <article>
-            <PostHeader post={post} />
-
-            {/* MDX content */}
-            <div className="prose">{content}</div>
-
-            {/* Newsletter CTA */}
-            <NewsletterForm className="mt-16" />
-
-            {/* Related posts */}
-            {relatedPosts.length > 0 && (
-              <section className="mt-16">
-                <h2 className="mb-6 text-xs font-semibold uppercase tracking-widest text-[var(--text-muted)]">
-                  Related
-                </h2>
-                <div>
-                  {relatedPosts.map((p) => (
-                    <PostCard key={p.slug} post={p} />
-                  ))}
-                </div>
-              </section>
-            )}
-
-            {/* Comments */}
-            <section className="mt-16">
-              <h2 className="mb-6 text-xs font-semibold uppercase tracking-widest text-[var(--text-muted)]">
-                Discussion
-              </h2>
-              <GiscusComments />
-            </section>
-          </article>
-        </div>
+          {/* Contact */}
+          <div className="mt-20 border-t border-white/[0.06] pt-10 text-center">
+            <a
+              href="mailto:blog@calaos.me"
+              className="text-sm text-white/30 transition-colors duration-150 hover:text-blue-400"
+            >
+              Gedanken dazu? Schreib mir.
+            </a>
+          </div>
+        </article>
       </div>
     </>
+
   )
 }

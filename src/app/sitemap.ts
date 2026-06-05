@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { getAllPosts, getAllTags } from '@/lib/posts'
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://calaos.io'
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://calaos.me'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts()

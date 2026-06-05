@@ -6,6 +6,11 @@ export interface PostFrontmatter {
   published: boolean
   featured?: boolean
   coverImage?: string
+  /** Title/caption shown in the cover image overlay (also used as alt text) */
+  coverImageTitle?: string
+  /** Credit for the cover image: "Author Name | https://author-link.com" */
+  coverImageCredit?: string
+  author?: string
 }
 
 export interface Post extends PostFrontmatter {

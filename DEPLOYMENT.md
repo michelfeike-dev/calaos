@@ -31,7 +31,7 @@ git push -u origin main
 
 In the Vercel dashboard:
 1. Project → Settings → Domains
-2. Add `calaos.io`
+2. Add `calaos.me`
 3. Follow DNS configuration instructions (typically add an `A` record or `CNAME`)
 
 ### 4. Environment Variables
@@ -39,7 +39,7 @@ In the Vercel dashboard:
 Add these in Vercel → Project → Settings → Environment Variables:
 
 ```
-NEXT_PUBLIC_SITE_URL=https://calaos.io
+NEXT_PUBLIC_SITE_URL=https://calaos.me
 RESEND_API_KEY=re_xxxxxxxx
 RESEND_AUDIENCE_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 NEXT_PUBLIC_GISCUS_REPO=username/calaos
@@ -103,7 +103,7 @@ PR opened          →        CI runs (type + lint + build)
     │                       
     ▼                       
 PR merged to main  →        CI runs again   →   Production deploy
-    │                                           ─ calaos.io updated
+    │                                           ─ calaos.me updated
     ▼
 Preview URL available from Vercel bot comment on PR
 ```

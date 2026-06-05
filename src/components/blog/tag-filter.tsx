@@ -7,20 +7,21 @@ import { cn } from '@/lib/utils'
 interface TagFilterProps {
   tags: string[]
   activeTag?: string
+  basePath?: string
 }
 
-export function TagFilter({ tags, activeTag }: TagFilterProps) {
+export function TagFilter({ tags, activeTag, basePath = '/blog' }: TagFilterProps) {
   const pathname = usePathname()
 
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap justify-center gap-2">
       <Link
-        href="/"
+        href={basePath}
         className={cn(
-          'rounded px-3 py-1 text-xs font-medium transition-colors duration-150',
-          pathname === '/' && !activeTag
-            ? 'bg-[var(--text-primary)] text-[var(--bg-base)]'
-            : 'bg-[var(--bg-subtle)] text-[var(--text-muted)] hover:text-[var(--text-primary)]'
+          'rounded-full px-3 py-1 text-xs font-medium transition-colors duration-150',
+          (pathname === basePath || pathname === '/') && !activeTag
+            ? 'bg-blue-400/15 text-blue-400'
+            : 'bg-white/[0.06] text-white/30 hover:bg-blue-400/10 hover:text-blue-400'
         )}
       >
         All
@@ -30,10 +31,10 @@ export function TagFilter({ tags, activeTag }: TagFilterProps) {
           key={tag}
           href={`/tag/${tag}`}
           className={cn(
-            'rounded px-3 py-1 text-xs font-medium transition-colors duration-150',
+            'rounded-full px-3 py-1 text-xs font-medium transition-colors duration-150',
             activeTag === tag
-              ? 'bg-[var(--text-primary)] text-[var(--bg-base)]'
-              : 'bg-[var(--bg-subtle)] text-[var(--text-muted)] hover:text-[var(--text-primary)]'
+              ? 'bg-blue-400/15 text-blue-400'
+              : 'bg-white/[0.06] text-white/30 hover:bg-blue-400/10 hover:text-blue-400'
           )}
         >
           {tag}

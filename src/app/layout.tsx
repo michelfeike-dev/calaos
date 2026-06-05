@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono, Instrument_Serif } from 'next/font/google'
-import { ThemeProvider } from '@/components/shared/theme-provider'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import './globals.css'
@@ -26,11 +25,11 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   title: {
-    default: 'calaos — Design & Craft',
-    template: '%s — calaos',
+    default: 'calaos.',
+    template: '%s — calaos.',
   },
   description: 'Writings on visual design, creative process, and the details that matter.',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://calaos.io'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://calaos.me'),
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -44,6 +43,10 @@ export const metadata: Metadata = {
     title: 'calaos — Design & Craft',
     description: 'Writings on visual design, creative process, and the details that matter.',
   },
+  icons: {
+    icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
+    shortcut: [{ url: '/icon.svg', type: 'image/svg+xml' }],
+  },
   robots: {
     index: true,
     follow: true,
@@ -54,20 +57,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} h-full`}
+      className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} h-full dark`}
     >
       <body className="flex min-h-full flex-col antialiased">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </ThemeProvider>
+        <Header />
+        <main className="flex flex-1 flex-col pt-24">{children}</main>
+        <Footer />
       </body>
     </html>
   )

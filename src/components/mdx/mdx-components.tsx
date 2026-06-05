@@ -1,7 +1,7 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import type { MDXComponents } from 'mdx/types'
 import { Callout } from './callout'
+import { ImageWithAttribution } from './image-with-attribution'
 
 export function getMdxComponents(): MDXComponents {
   return {
@@ -18,25 +18,16 @@ export function getMdxComponents(): MDXComponents {
       return <Link href={href ?? '#'} {...props}>{children}</Link>
     },
 
-    // Optimized images
-    img: ({ src, alt, width, height, ...props }) => {
-      if (!src) return null
-      return (
-        <span className="block my-8">
-          <Image
-            src={src as string}
-            alt={alt ?? ''}
-            width={(width as number) ?? 800}
-            height={(height as number) ?? 450}
-            className="rounded-lg"
-            {...props}
-          />
-          {alt && (
-            <span className="mt-2 block text-center text-xs text-[var(--text-muted)]">{alt}</span>
-          )}
-        </span>
-      )
-    },
+    // Optimized images with hover attribution overlay
+    img: ({ src, alt, title, width, height }) => (
+      <ImageWithAttribution
+        src={src as string | undefined}
+        alt={alt}
+        title={title}
+        width={width as number | string | undefined}
+        height={height as number | string | undefined}
+      />
+    ),
 
     // Custom components available in MDX
     Callout,

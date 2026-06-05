@@ -14,12 +14,11 @@ Built with Next.js 16, TailwindCSS v4, MDX, and deployed on Vercel.
 | Language | TypeScript |
 | Styling | TailwindCSS v4 + CSS Custom Properties |
 | Content | MDX (file-based, Git-versioned) |
-| UI | shadcn/ui (headless, copy-paste) |
 | Animations | Framer Motion |
-| Dark Mode | next-themes (system + manual toggle) |
+| Theme | Dark-only (hardcoded, no theme switcher) |
 | Syntax Highlighting | rehype-pretty-code + shiki |
-| Comments | Giscus (GitHub Discussions) |
 | Newsletter | Resend |
+| Contact | `mailto:` links (no comment system) |
 | Hosting | Vercel |
 | CI/CD | GitHub Actions |
 
@@ -59,7 +58,95 @@ featured: false
 Your content here...
 ```
 
-The filename becomes the URL slug: `my-post.mdx` → `calaos.io/my-post`.
+The filename becomes the URL slug: `my-post.mdx` → `calaos.me/my-post`.
+
+### Cover Image
+
+Add an optional cover image to any post via the `coverImage` frontmatter field:
+
+```mdx
+---
+title: "Post Title"
+coverImage: "/images/posts/my-post/cover.jpg"
+coverImageTitle: "Sonnenaufgang über den Alpen"
+coverImageCredit: "Thales Botelho | https://unsplash.com/@thales"
+author: "Michel Feike"
+published: true
+---
+```
+
+| Field | Required | Purpose |
+|---|---|---|
+| `coverImage` | – | Path to the image under `public/` |
+| `coverImageTitle` | optional | Caption shown in the hover overlay (also used as `alt` text) |
+| `coverImageCredit` | optional | Attribution as `"Author Name \| https://author-link.com"` (URL optional) |
+
+**Attribution overlay:** When `coverImageTitle` and/or `coverImageCredit` are set, a
+credit overlay fades in on hover (and on keyboard focus). The author becomes a link
+that opens in a new tab. This uses the same `"Author | URL"` convention as inline
+images (see [Image Attribution](#image-attribution) below).
+
+**Where to save:**
+
+```
+public/
+└── images/
+    └── posts/
+        └── my-post-slug/   ← one folder per post, named after the slug
+            └── cover.jpg
+```
+
+**Optimal specs:**
+
+| Property | Value |
+|---|---|
+| Aspect ratio | **16:9** — the image renders in an `aspect-video` container |
+| Dimensions | **1600 × 900 px** (minimum: 1280 × 720) |
+| Format | **JPEG** for photos · **WebP** for best compression · **PNG only** for graphics/logos |
+| Source file size | **Under 500 KB** before adding to the repo |
+
+> Next.js automatically converts and serves AVIF/WebP to supporting browsers (configured in `next.config.ts`). But the source file is stored on disk as-is — so optimize it before committing.
+
+**How to compress before saving (free tools):**
+
+| Tool | How |
+|---|---|
+| [Squoosh](https://squoosh.app) | Browser-based · drag & drop · export as WebP/JPEG with quality slider |
+| ImageOptim (Mac) | Drag & drop · lossless/lossy compression |
+| Sharp CLI | `npx sharp-cli -i input.png -o cover.jpg -f jpeg -q 85` |
+
+**Common mistake — PNG for photos:**  
+PNG is lossless and correct for logos/graphics with transparency. For photographs it produces files 5–10× larger than JPEG at the same visual quality. Always use JPEG or WebP for photos.
+
+**If no `coverImage` is set**, a dark gradient placeholder is shown — the post still renders correctly.
+
+**Troubleshooting — image not showing:**  
+Make sure the path in the frontmatter exactly matches the file location under `public/`. Example: file at `public/images/posts/my-post/cover.jpg` → frontmatter value `/images/posts/my-post/cover.jpg`.
+
+### Image Attribution
+
+Inline images inside the post body support the same attribution overlay as the cover
+image — no per-post setup, every markdown image is handled automatically. Use the
+standard markdown image syntax and store the credit in the **title** (the part in
+quotes):
+
+```markdown
+![Sonnenaufgang über den Alpen](/images/posts/my-post/photo.jpg "Thales Botelho | https://unsplash.com/@thales")
+```
+
+| Part | Maps to | Shown as |
+|---|---|---|
+| `![ ... ]` (alt) | image title | bold caption line in the overlay |
+| `" ... "` before `\|` | author name | `Foto: <author>` |
+| `" ... "` after `\|` | author URL (optional) | makes the author a link (new tab) |
+
+On hover (or keyboard focus) a gradient overlay fades in at the bottom of the image
+showing the title and a clickable `Foto: <author>` credit. The overlay is absolutely
+positioned, so it never shifts the surrounding text. Implemented in
+[`ImageWithAttribution`](src/components/mdx/image-with-attribution.tsx); the shared
+parser lives in [`src/lib/attribution.ts`](src/lib/attribution.ts).
+
+Images **without** a title render normally, with no overlay.
 
 ### Custom MDX Components
 
@@ -79,25 +166,51 @@ See [.env.example](.env.example) for all required variables.
 
 | Variable | Required | Description |
 |---|---|---|
-| `NEXT_PUBLIC_SITE_URL` | Yes | Production URL |
+| `NEXT_PUBLIC_SITE_URL` | Yes | Production URL (e.g. `https://calaos.me`) |
 | `RESEND_API_KEY` | For newsletter | Resend API key |
 | `RESEND_AUDIENCE_ID` | For newsletter | Resend audience ID |
-| `NEXT_PUBLIC_GISCUS_REPO` | For comments | `owner/repo` |
-| `NEXT_PUBLIC_GISCUS_REPO_ID` | For comments | From giscus.app |
-| `NEXT_PUBLIC_GISCUS_CATEGORY_ID` | For comments | From giscus.app |
+
+> The newsletter API route returns `503` gracefully when the Resend variables are absent, so the site builds and runs without them.
 
 ---
 
 ## Scripts
 
 ```bash
-pnpm dev          # Start dev server
-pnpm build        # Production build
-pnpm start        # Start production server
-pnpm lint         # Run ESLint
-pnpm type-check   # Run TypeScript checks
-pnpm format       # Format with Prettier
+pnpm dev               # Start dev server
+pnpm build             # Production build
+pnpm start             # Start production server
+pnpm lint              # Run ESLint
+pnpm type-check        # Run TypeScript checks
+pnpm format            # Format with Prettier
+pnpm format:check      # Check formatting without writing
+pnpm generate:favicon  # Regenerate favicon.ico from public/icon.svg
 ```
+
+### Favicon
+
+The brand icon lives at `public/icon.svg`. After changing it, run `pnpm generate:favicon`
+to rebuild `src/app/favicon.ico` (16/32/48 px, embedded PNGs — Safari-compatible).
+`src/app/icon.tsx` additionally serves a generated PNG for modern browsers.
+
+---
+
+## Quality Checks
+
+Before every commit / deploy, run the full suite (this is also what CI enforces):
+
+```bash
+pnpm lint && pnpm type-check && pnpm build
+```
+
+| Step | What it catches |
+|---|---|
+| `pnpm lint` | ESLint + Next.js rules (unescaped entities, `<a>` vs `<Link>`, image hints) |
+| `pnpm type-check` | `tsc --noEmit` — full type safety |
+| `pnpm build` | Production build + static generation of all routes |
+
+A green build statically prerenders all content routes (`/`, `/blog`, `/about`,
+`/coach`, legal pages, every post and tag); `/api/*` stay dynamic by design.
 
 ---
 

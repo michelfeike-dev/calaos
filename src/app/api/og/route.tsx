@@ -61,7 +61,7 @@ export async function GET(request: NextRequest) {
         >
           <span style={{ color: '#444444', fontSize: '14px' }}>Design & Craft</span>
           <span style={{ color: '#222222', fontSize: '14px' }}>·</span>
-          <span style={{ color: '#444444', fontSize: '14px' }}>calaos.io</span>
+          <span style={{ color: '#444444', fontSize: '14px' }}>calaos.me</span>
         </div>
       </div>
     ),

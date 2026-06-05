@@ -15,7 +15,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { tag } = await params
   return {
-    title: `#${tag}`,
+    title: tag,
     description: `All posts tagged with "${tag}".`,
   }
 }
@@ -28,24 +28,17 @@ export default async function TagPage({ params }: Props) {
   if (!allTags.includes(tag)) notFound()
 
   return (
-    <div className="mx-auto max-w-3xl px-6 py-16">
-      <section className="mb-12">
-        <h1 className="font-display mb-2 text-3xl font-normal tracking-tight text-[var(--text-primary)]">
-          #{tag}
-        </h1>
-        <p className="text-sm text-[var(--text-muted)]">
-          {posts.length} {posts.length === 1 ? 'post' : 'posts'}
-        </p>
-      </section>
-
+    <div className="mx-auto max-w-5xl px-6 py-16">
       <section className="mb-8">
         <TagFilter tags={allTags} activeTag={tag} />
       </section>
 
       <section>
-        {posts.map((post) => (
-          <PostCard key={post.slug} post={post} />
-        ))}
+        <div className="grid gap-4 sm:grid-cols-2">
+          {posts.map((post) => (
+            <PostCard key={post.slug} post={post} />
+          ))}
+        </div>
       </section>
     </div>
   )

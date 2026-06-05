@@ -31,5 +31,5 @@ export function slugify(text: string): string {
 }
 
 export function absoluteUrl(path: string): string {
-  return `${process.env.NEXT_PUBLIC_SITE_URL ?? 'https://calaos.io'}${path}`
+  return `${process.env.NEXT_PUBLIC_SITE_URL ?? 'https://calaos.me'}${path}`
 }

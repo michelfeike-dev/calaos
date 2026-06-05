@@ -1,38 +1,44 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { cn } from '@/lib/utils'
+
+const links = [
+  { href: '/about', label: 'über mich' },
+  { href: '/datenschutz', label: 'datenschutz' },
+  { href: '/impressum', label: 'impressum' },
+  { href: '/newsletter', label: 'brief' },
+]
 
 export function Footer() {
+  const pathname = usePathname()
+
   return (
-    <footer className="border-t border-[var(--border)] py-12">
-      <div className="mx-auto max-w-3xl px-6">
-        <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
-          <div>
-            <p className="text-sm font-medium text-[var(--text-primary)]">calaos</p>
-            <p className="mt-1 text-xs text-[var(--text-muted)]">
-              Writings on design, craft, and creative process.
-            </p>
-          </div>
+    <footer className="border-t border-white/[0.06] py-12">
+      <div className="mx-auto max-w-5xl px-6">
 
-          <nav className="flex items-center gap-4" aria-label="Footer navigation">
-            <Link
-              href="/"
-              className="text-xs text-[var(--text-muted)] transition-colors duration-150 hover:text-[var(--text-primary)]"
-            >
-              Blog
-            </Link>
-            <Link
-              href="/about"
-              className="text-xs text-[var(--text-muted)] transition-colors duration-150 hover:text-[var(--text-primary)]"
-            >
-              About
-            </Link>
+        <div className="flex flex-col items-center gap-6">
+          <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3" aria-label="Footer navigation">
+            {links.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className={cn(
+                  'text-xs transition-colors duration-150 hover:text-blue-400',
+                  pathname === href ? 'text-white' : 'text-white/30'
+                )}
+              >
+                {label}
+              </Link>
+            ))}
           </nav>
-        </div>
 
-        <div className="mt-8 border-t border-[var(--border)] pt-6">
-          <p className="text-xs text-[var(--text-faint)]">
+          <p className="text-xs text-white/20">
             © {new Date().getFullYear()} calaos. All rights reserved.
           </p>
         </div>
+
       </div>
     </footer>
   )
