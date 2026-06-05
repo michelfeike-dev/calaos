@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function CoachPage() {
   return (
     <>
-      <PillarsSection cta={{ href: 'mailto:coach@calaos.me', text: 'komm näher. lass uns sprechen.' }} />
+      <PillarsSection wide cta={{ href: 'mailto:coach@calaos.me', text: 'komm näher. lass uns sprechen.' }} />
     </>
   )
 }

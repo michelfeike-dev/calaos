@@ -13,12 +13,20 @@ const ease = [0.25, 0.1, 0.25, 1] as const
 interface PillarsSectionProps {
   cta?: { href: string; text: string }
   border?: boolean
+  /** Use the full viewport width instead of the centered max-w-5xl container */
+  wide?: boolean
 }
 
-export function PillarsSection({ cta, border = false }: PillarsSectionProps) {
+export function PillarsSection({ cta, border = false, wide = false }: PillarsSectionProps) {
   return (
     <section className={border ? 'border-t border-white/[0.06] py-12 sm:py-32' : 'py-12 sm:py-32'}>
-      <div className="mx-auto max-w-5xl px-6 sm:px-8">
+      <div
+        className={
+          wide
+            ? 'mx-auto max-w-none px-6 sm:px-12 lg:px-20'
+            : 'mx-auto max-w-5xl px-6 sm:px-8'
+        }
+      >
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-8">
           {pillars.map(({ src, alt, sub }, i) => (
             <motion.div
@@ -32,7 +40,7 @@ export function PillarsSection({ cta, border = false }: PillarsSectionProps) {
               {/* SVG-Schriftzug — kein next/image nötig (vektoriell, winzig) */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={src} alt={alt} className="w-full" draggable={false} />
-              <p className="text-xs uppercase tracking-widest text-white/25">{sub}</p>
+              <p className="text-xs uppercase tracking-widest text-blue-400/70">{sub}</p>
             </motion.div>
           ))}
         </div>

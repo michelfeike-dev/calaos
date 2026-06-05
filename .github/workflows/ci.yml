@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -26,9 +26,9 @@ jobs:
           version: 11
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'pnpm'
 
       - name: Install dependencies
@@ -44,4 +44,4 @@ jobs:
         run: pnpm build
         env:
           NEXT_PUBLIC_SITE_URL: https://calaos.me
-          # Newsletter + Giscus not needed for build
+          # Newsletter env vars not needed for build
