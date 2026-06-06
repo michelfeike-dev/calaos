@@ -1,11 +1,37 @@
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
+import {
+  HONEYPOT_FIELD,
+  clientIp,
+  confirmUrl,
+  confirmationEmailHtml,
+  isAllowedOrigin,
+  isValidEmail,
+  normalizeEmail,
+  rateLimit,
+} from '@/lib/newsletter'
 
-function isValidEmail(email: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-}
+export const runtime = 'nodejs'
 
+/**
+ * Double-opt-in subscription request.
+ * Validates, rate-limits and sends a confirmation email. The contact is only
+ * created in Resend AFTER the user confirms (see /api/newsletter/confirm).
+ */
 export async function POST(request: Request) {
+  // CSRF: reject cross-site form posts
+  if (!isAllowedOrigin(request)) {
+    return NextResponse.json({ error: 'Forbidden.' }, { status: 403 })
+  }
+
+  // Best-effort rate limiting
+  if (!rateLimit(clientIp(request)).allowed) {
+    return NextResponse.json(
+      { error: 'Zu viele Anfragen. Bitte versuche es später erneut.' },
+      { status: 429 }
+    )
+  }
+
   let body: unknown
   try {
     body = await request.json()
@@ -13,38 +39,52 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Invalid request body.' }, { status: 400 })
   }
 
-  const email =
-    typeof body === 'object' && body !== null && 'email' in body
-      ? String((body as { email: unknown }).email)
-      : ''
+  const record = typeof body === 'object' && body !== null ? (body as Record<string, unknown>) : {}
 
-  if (!email || !isValidEmail(email)) {
-    return NextResponse.json({ error: 'Please provide a valid email address.' }, { status: 400 })
+  // Honeypot: bots fill every field. Respond 200 so they can't probe, but do nothing.
+  if (typeof record[HONEYPOT_FIELD] === 'string' && record[HONEYPOT_FIELD] !== '') {
+    return NextResponse.json({ message: 'Fast geschafft — bestätige den Link in deiner E-Mail.' })
+  }
+
+  const email = normalizeEmail(record.email)
+  if (!isValidEmail(email)) {
+    return NextResponse.json(
+      { error: 'Bitte gib eine gültige E-Mail-Adresse an.' },
+      { status: 400 }
+    )
   }
 
   const apiKey = process.env.RESEND_API_KEY
   const audienceId = process.env.RESEND_AUDIENCE_ID
-
-  if (!apiKey || !audienceId) {
-    return NextResponse.json({ error: 'Newsletter is not configured yet.' }, { status: 503 })
+  const from = process.env.NEWSLETTER_FROM
+  if (!apiKey || !audienceId || !from || !process.env.NEWSLETTER_SECRET) {
+    return NextResponse.json({ error: 'Newsletter ist noch nicht konfiguriert.' }, { status: 503 })
   }
 
   const resend = new Resend(apiKey)
 
   try {
-    await resend.contacts.create({
-      email,
-      audienceId,
-      unsubscribed: false,
+    // Resend returns { data, error } and does not throw on API errors.
+    const { error } = await resend.emails.send({
+      from,
+      to: email,
+      subject: 'Bestätige deine Anmeldung – calaos',
+      html: confirmationEmailHtml(confirmUrl(email)),
     })
-
-    return NextResponse.json({ message: "You're subscribed. Thank you!" })
-  } catch (err) {
-    const error = err as { statusCode?: number; message?: string }
-    if (error?.statusCode === 409) {
-      return NextResponse.json({ message: "You're already subscribed." })
+    if (error) {
+      console.error('[newsletter:subscribe]', error)
+      return NextResponse.json(
+        { error: 'Etwas ist schiefgelaufen. Bitte versuche es erneut.' },
+        { status: 502 }
+      )
     }
-    console.error('[newsletter]', err)
-    return NextResponse.json({ error: 'Something went wrong. Please try again.' }, { status: 500 })
+
+    return NextResponse.json({ message: 'Fast geschafft — bestätige den Link in deiner E-Mail.' })
+  } catch (err) {
+    console.error('[newsletter:subscribe]', err)
+    return NextResponse.json(
+      { error: 'Etwas ist schiefgelaufen. Bitte versuche es erneut.' },
+      { status: 500 }
+    )
   }
 }

@@ -129,8 +129,11 @@ export default function DatenschutzPage() {
         <p>
           Wenn du meinen Newsletter abonnierst, verarbeite ich deine E-Mail-Adresse
           ausschließlich zum Zweck des regelmäßigen Versands redaktioneller Inhalte.
-          Die Anmeldung erfolgt über das Formular auf dieser Website; die Einwilligung
-          wird mit Absenden des Formulars erteilt.
+          Die Anmeldung erfolgt im <strong>Double-Opt-In-Verfahren</strong>: Nach Absenden
+          des Formulars erhältst du eine E-Mail mit einem Bestätigungslink. Erst mit Klick
+          auf diesen Link wird deine Anmeldung wirksam und deine Adresse in die
+          Empfängerliste aufgenommen. So wird sichergestellt, dass die Anmeldung
+          tatsächlich von dir stammt. Bestätigst du nicht, wird keine Adresse gespeichert.
         </p>
         <p>
           <strong>Dienstleister:</strong> Der Versand erfolgt über Resend, Inc.,
@@ -149,12 +152,15 @@ export default function DatenschutzPage() {
         </p>
         <p>
           <strong>Rechtsgrundlage:</strong> Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;a DSGVO
-          (Einwilligung). Du kannst deine Einwilligung jederzeit durch Klick auf den
-          &bdquo;Abmelden&ldquo;-Link in jeder E-Mail oder durch formlose E-Mail an mich
-          widerrufen.
-          Nach Widerruf werden deine Daten unverzüglich aus der Empfängerliste gelöscht.
-          Die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung bleibt davon
-          unberührt.
+          (Einwilligung).
+        </p>
+        <p>
+          <strong>Abmeldung:</strong> Du kannst deine Einwilligung jederzeit und ohne
+          Angabe von Gründen widerrufen — der Widerruf ist so einfach wie die Anmeldung
+          (Art.&nbsp;7 Abs.&nbsp;3 DSGVO). Jede Newsletter-E-Mail enthält dafür einen
+          Abmeldelink; alternativ genügt eine formlose E-Mail an mich. Nach der Abmeldung
+          wird deine Adresse unverzüglich aus der Empfängerliste entfernt. Die
+          Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung bleibt unberührt.
         </p>
 
         <h2>7. Schriftarten</h2>
