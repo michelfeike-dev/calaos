@@ -133,7 +133,29 @@ export function isAllowedOrigin(request: Request): boolean {
   // Non-browser / same-origin server calls may omit Origin entirely.
   if (!origin) return true
 
-  const allowed = new Set<string>([siteUrl()])
+  // Primary check: same-origin. The browser sets Origin to the page's origin,
+  // so a legitimate same-site request matches the host it is sent to. This is
+  // domain-agnostic — works on the apex, www, and *.vercel.app previews alike.
+  const host = request.headers.get('x-forwarded-host') ?? request.headers.get('host')
+  const proto = request.headers.get('x-forwarded-proto') ?? 'https'
+  if (host && origin === `${proto}://${host}`) return true
+
+  // Fallback allow-list: configured site URL (+ www/apex variant), localhost in dev.
+  const allowed = new Set<string>()
+  const site = process.env.NEXT_PUBLIC_SITE_URL
+  if (site) {
+    try {
+      const url = new URL(site)
+      allowed.add(url.origin)
+      const altHost = url.host.startsWith('www.') ? url.host.slice(4) : `www.${url.host}`
+      allowed.add(`${url.protocol}//${altHost}`)
+    } catch {
+      // ignore malformed NEXT_PUBLIC_SITE_URL
+    }
+  } else {
+    allowed.add('https://calaos.me')
+    allowed.add('https://www.calaos.me')
+  }
   if (process.env.NODE_ENV !== 'production') {
     allowed.add('http://localhost:3000')
     allowed.add('http://127.0.0.1:3000')
