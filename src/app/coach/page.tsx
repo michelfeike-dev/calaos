@@ -1,15 +1,19 @@
 import type { Metadata } from 'next'
-import { PillarsSection } from '@/components/home/pillars-section'
 
 export const metadata: Metadata = {
   title: 'coach',
-  description: 'Design coaching — one-on-one sessions for designers who want to level up.',
+  description: 'Coaching — komm näher. lass uns sprechen.',
 }
 
 export default function CoachPage() {
   return (
-    <>
-      <PillarsSection wide cta={{ href: 'mailto:coach@calaos.me', text: 'komm näher. lass uns sprechen.' }} />
-    </>
+    <div className="flex flex-1 items-center justify-center px-6">
+      <a
+        href="mailto:coach@calaos.me"
+        className="text-center text-base text-white/40 transition-colors duration-150 hover:text-blue-400 sm:text-sm"
+      >
+        komm näher. lass uns sprechen.
+      </a>
+    </div>
   )
 }
