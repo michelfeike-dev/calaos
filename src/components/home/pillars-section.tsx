@@ -25,7 +25,13 @@ export function PillarsSection({ pillars, cta, border = false, wide = false }: P
   const isExternal = cta ? /^(https?:|mailto:)/.test(cta.href) : false
 
   return (
-    <section className={border ? 'border-t border-white/[0.06] py-12 sm:py-32' : 'py-12 sm:py-32'}>
+    <section
+      className={
+        border
+          ? 'border-t border-white/[0.06] pt-2 pb-12 sm:py-32'
+          : 'pt-2 pb-12 sm:py-32'
+      }
+    >
       <div
         className={
           wide
