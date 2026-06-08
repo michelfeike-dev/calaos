@@ -1,23 +1,29 @@
 'use client'
 
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 
-const pillars = [
-  { src: '/images/text/calma.svg', alt: 'calma.', sub: 'stabilität.' },
-  { src: '/images/text/chaos.svg', alt: 'chaos.', sub: 'wachstum durch konfrontation.' },
-  { src: '/images/text/leben.svg', alt: 'leben.', sub: 'dein weg.' },
-]
-
-const ease = [0.25, 0.1, 0.25, 1] as const
+export interface Pillar {
+  src: string
+  alt: string
+  sub: string
+}
 
 interface PillarsSectionProps {
+  pillars: Pillar[]
   cta?: { href: string; text: string }
   border?: boolean
   /** Use the full viewport width instead of the centered max-w-5xl container */
   wide?: boolean
 }
 
-export function PillarsSection({ cta, border = false, wide = false }: PillarsSectionProps) {
+const ease = [0.25, 0.1, 0.25, 1] as const
+
+export function PillarsSection({ pillars, cta, border = false, wide = false }: PillarsSectionProps) {
+  const cols =
+    pillars.length >= 3 ? 'sm:grid-cols-3' : pillars.length === 2 ? 'sm:grid-cols-2' : 'sm:grid-cols-1'
+  const isExternal = cta ? /^(https?:|mailto:)/.test(cta.href) : false
+
   return (
     <section className={border ? 'border-t border-white/[0.06] py-12 sm:py-32' : 'py-12 sm:py-32'}>
       <div
@@ -27,7 +33,7 @@ export function PillarsSection({ cta, border = false, wide = false }: PillarsSec
             : 'mx-auto max-w-5xl px-6 sm:px-8'
         }
       >
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-8">
+        <div className={`grid grid-cols-1 gap-10 ${cols} sm:gap-8`}>
           {pillars.map(({ src, alt, sub }, i) => (
             <motion.div
               key={alt}
@@ -53,12 +59,21 @@ export function PillarsSection({ cta, border = false, wide = false }: PillarsSec
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 1.1, ease, delay: 0.6 }}
           >
-            <a
-              href={cta.href}
-              className="text-center text-base text-white/40 transition-colors duration-150 hover:text-blue-400 sm:text-sm"
-            >
-              {cta.text}
-            </a>
+            {isExternal ? (
+              <a
+                href={cta.href}
+                className="text-center text-base text-white/40 transition-colors duration-150 hover:text-blue-400 sm:text-sm"
+              >
+                {cta.text}
+              </a>
+            ) : (
+              <Link
+                href={cta.href}
+                className="text-center text-base text-white/40 transition-colors duration-150 hover:text-blue-400 sm:text-sm"
+              >
+                {cta.text}
+              </Link>
+            )}
           </motion.div>
         )}
       </div>

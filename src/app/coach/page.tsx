@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { PillarsSection } from '@/components/home/pillars-section'
+import { CoachStatement } from '@/components/home/coach-statement'
 
 export const metadata: Metadata = {
   title: 'coach',
@@ -7,9 +7,5 @@ export const metadata: Metadata = {
 }
 
 export default function CoachPage() {
-  return (
-    <>
-      <PillarsSection wide cta={{ href: 'mailto:coach@calaos.me', text: 'komm näher. lass uns sprechen.' }} />
-    </>
-  )
+  return <CoachStatement cta={{ href: 'mailto:coach@calaos.me', text: 'komm näher. lass uns sprechen.' }} />
 }
