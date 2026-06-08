@@ -107,6 +107,17 @@ describe('origin allow-list', () => {
     expect(isAllowedOrigin(make('https://calaos.me'))).toBe(true)
   })
 
+  it('allows the www variant of the configured site', () => {
+    expect(isAllowedOrigin(make('https://www.calaos.me'))).toBe(true)
+  })
+
+  it('allows same-origin requests on any host (e.g. *.vercel.app preview)', () => {
+    const req = new Request('https://calaos.vercel.app/api/newsletter', {
+      headers: { origin: 'https://calaos.vercel.app', host: 'calaos.vercel.app' },
+    })
+    expect(isAllowedOrigin(req)).toBe(true)
+  })
+
   it('allows requests without an Origin header', () => {
     expect(isAllowedOrigin(make())).toBe(true)
   })
