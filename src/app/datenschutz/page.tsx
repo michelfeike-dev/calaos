@@ -96,7 +96,7 @@ export default function DatenschutzPage() {
           i.&nbsp;V.&nbsp;m. § 25 Abs.&nbsp;2 Nr.&nbsp;2 TDDDG.
         </p>
 
-        <h2>5. Web-Analyse (Vercel Web Analytics)</h2>
+        <h2>5. Web-Analyse &amp; Performance-Messung (Vercel)</h2>
         <p>
           Zur Reichweitenmessung nutze ich Vercel Web Analytics, einen Dienst der
           Vercel Inc., 440 N Barranca Ave #4133, Covina, CA&nbsp;91723, USA. Erfasst
@@ -104,7 +104,12 @@ export default function DatenschutzPage() {
           aufgerufene Seiten, ungefähre Herkunftsregion, Gerätetyp, Referrer).
         </p>
         <p>
-          Vercel Web Analytics arbeitet <strong>cookielos</strong> und legt keine
+          Zusätzlich nutze ich Vercel Speed Insights (ebenfalls Vercel Inc.) zur Messung
+          technischer Performance-Kennzahlen (z.&nbsp;B. Ladezeiten, Web Vitals). Auch
+          hierbei werden ausschließlich aggregierte, anonyme Messwerte verarbeitet.
+        </p>
+        <p>
+          Beide Dienste arbeiten <strong>cookielos</strong> und legen keine
           geräteübergreifenden Nutzerprofile an. Es werden keine IP-Adressen dauerhaft
           gespeichert und keine personenbezogenen Identifikatoren gebildet; eine
           Wiedererkennung einzelner Besucher findet nicht statt.

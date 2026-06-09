@@ -13,14 +13,14 @@ const securityHeaders = [
     value: [
       "default-src 'self'",
       // unsafe-eval nur im Dev-Modus (React DevTools benötigen eval())
-      // va.vercel-scripts.com: Vercel Web Analytics
+      // va.vercel-scripts.com: Vercel Web Analytics + Speed Insights
       `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''} https://va.vercel-scripts.com`,
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: https:",
       "font-src 'self'",
       "frame-src 'none'",
-      // Vercel Analytics sendet Beacons an die eigene Domain (/_vercel/insights)
-      "connect-src 'self' https://api.resend.com",
+      // Analytics: eigene Domain (/_vercel/insights) · Speed Insights: vitals.vercel-insights.com · Resend
+      "connect-src 'self' https://api.resend.com https://vitals.vercel-insights.com",
       "form-action 'self'",
       "object-src 'none'",
       "base-uri 'self'",
