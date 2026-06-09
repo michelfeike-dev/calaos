@@ -43,14 +43,17 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Writing Posts
 
-Create `.mdx` files in `src/content/posts/`. Each file needs this frontmatter:
+Create `.mdx` files in `src/content/posts/`. The filename becomes the URL slug
+(`my-post.mdx` → `calaos.me/my-post`). The fastest start is to copy the template
+[`src/content/posts/_template.mdx`](src/content/posts/_template.mdx) — it ships with
+`published: false`, so it never appears in the blog until you flip that flag.
 
 ```mdx
 ---
 title: "Post Title"
 description: "One-sentence description for SEO and previews."
-date: "2024-01-15"
-tags: ["design", "typography"]
+date: "2026-01-01"
+tags: ["calma", "chaos"]
 published: true
 featured: false
 ---
@@ -58,7 +61,27 @@ featured: false
 Your content here...
 ```
 
-The filename becomes the URL slug: `my-post.mdx` → `calaos.me/my-post`.
+### Frontmatter reference
+
+| Field | Required | Purpose |
+|---|---|---|
+| `title` | **Yes** | Headline, also the `<title>` tag |
+| `description` | **Yes** | One sentence for SEO, preview cards and social shares |
+| `date` | **Yes** | `YYYY-MM-DD` — controls sort order |
+| `tags` | **Yes** | Array — drives the tag filter and related posts |
+| `published` | **Yes** | `false` = draft (hidden from the list, sitemap, tags) |
+| `featured` | optional | `true` highlights the post at the top of the blog page |
+| `author` | optional | Shown under the title |
+| `coverImage` | optional | Path under `public/` (see [Cover Image](#cover-image)) |
+| `coverImageTitle` | optional | Caption shown in the cover hover overlay (also alt text) |
+| `coverImageCredit` | optional | `"Author \| https://link"` (URL optional) |
+
+### Post structure
+
+- First paragraph is the hook — no long preamble.
+- Section headings use `## Heading` (rendered blue, with divider lines).
+- Inline images carry attribution via the title: `![Alt](/path.jpg "Author \| https://link")` (see [Image Attribution](#image-attribution)).
+- Highlight notes with `<Callout type="info|warning|success|error">…</Callout>` (see [Custom MDX Components](#custom-mdx-components)).
 
 ### Cover Image
 

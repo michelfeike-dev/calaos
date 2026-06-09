@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { getAllPosts, getPostBySlug, getRelatedPosts } from '@/lib/posts'
+import { getAllPosts, getPostBySlug } from '@/lib/posts'
 import { compileMdxContent } from '@/lib/mdx'
 import { getMdxComponents } from '@/components/mdx/mdx-components'
 import { PostHeader } from '@/components/blog/post-header'
-import { PostCard } from '@/components/blog/post-card'
 import { NewsletterForm } from '@/components/shared/newsletter-form'
 import { absoluteUrl } from '@/lib/utils'
 
@@ -54,10 +53,7 @@ export default async function PostPage({ params }: Props) {
   const post = getPostBySlug(slug)
   if (!post) notFound()
 
-  const [{ content }, relatedPosts] = await Promise.all([
-    compileMdxContent(post.content, getMdxComponents()),
-    Promise.resolve(getRelatedPosts(slug, post.tags)),
-  ])
+  const { content } = await compileMdxContent(post.content, getMdxComponents())
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -91,20 +87,6 @@ export default async function PostPage({ params }: Props) {
 
           {/* Newsletter CTA */}
           <NewsletterForm className="mt-20" />
-
-          {/* Related posts */}
-          {relatedPosts.length > 0 && (
-            <section className="mt-20">
-              <h2 className="mb-6 text-xs font-semibold uppercase tracking-widest text-white/30">
-                Weitere Artikel
-              </h2>
-              <div className="flex flex-col gap-3">
-                {relatedPosts.map((p) => (
-                  <PostCard key={p.slug} post={p} />
-                ))}
-              </div>
-            </section>
-          )}
 
           {/* Contact */}
           <div className="mt-20 border-t border-white/[0.06] pt-10 text-center">
