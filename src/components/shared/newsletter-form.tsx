@@ -61,14 +61,12 @@ export function NewsletterForm({ className, initialStatus }: NewsletterFormProps
     )}>
       {/* Header */}
       <p className="font-display mb-3 text-2xl font-normal tracking-tight text-white">
-        Lebe dein Leben. — calaos.
+        Ein Brief aus calma und chaos.
       </p>
 
       {/* Description */}
       <p className="mb-6 text-sm leading-relaxed text-white/50">
-        Ehrliche Gedanken, Abenteuer, Erfahrungen und Werkzeuge für mehr innere Stärke,
-        Mut und Lebendigkeit. Lektionen aus Niederlagen, Herausforderungen und Neuanfängen.
-        Über das Hinfallen, Aufstehen und Weitertanzen. Ein Leben zwischen Calma und Chaos.
+        Ehrliche Gedanken, Abenteuer und Erfahrungen. Lektionen aus Niederlagen, Herausforderungen und Neuanfängen.
       </p>
 
       {status === 'success' ? (
