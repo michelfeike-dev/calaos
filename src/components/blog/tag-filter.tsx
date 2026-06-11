@@ -24,7 +24,7 @@ export function TagFilter({ tags, activeTag, basePath = '/blog' }: TagFilterProp
             : 'bg-white/[0.06] text-white/30 hover:bg-blue-400/10 hover:text-blue-400'
         )}
       >
-        All
+        all
       </Link>
       {tags.map((tag) => (
         <Link
