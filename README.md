@@ -130,13 +130,30 @@ public/
 
 > Next.js automatically converts and serves AVIF/WebP to supporting browsers (configured in `next.config.ts`). But the source file is stored on disk as-is — so optimize it before committing.
 
-**How to compress before saving (free tools):**
+**Built-in optimizer (recommended):**
 
-| Tool | How |
-|---|---|
-| [Squoosh](https://squoosh.app) | Browser-based · drag & drop · export as WebP/JPEG with quality slider |
-| ImageOptim (Mac) | Drag & drop · lossless/lossy compression |
-| Sharp CLI | `npx sharp-cli -i input.png -o cover.jpg -f jpeg -q 85` |
+Drop the original image into `public/images/posts/<slug>/`, then run:
+
+```bash
+pnpm optimize:images
+```
+
+This processes every `.jpg/.jpeg/.png` under `public/images/posts/**`:
+- downscales to **max 2000 px** wide (never upscales),
+- fixes **EXIF orientation** (prevents sideways/portrait surprises),
+- writes a **WebP** copy next to the original (e.g. `cover.jpg` → `cover.webp`).
+
+Tuning via env: `MAX_WIDTH` (default 2000), `QUALITY` (default 80), e.g.
+`QUALITY=85 pnpm optimize:images`.
+
+Afterwards: point the frontmatter (`coverImage`, inline image paths) at the
+`.webp` file and delete the large original. Typical result: a 6 MB source
+becomes ~250 KB with no visible quality loss at display sizes.
+
+> Implemented in [`scripts/optimize-images.mjs`](scripts/optimize-images.mjs)
+> using `sharp` (already a dependency).
+
+**Manual alternatives:** [Squoosh](https://squoosh.app) (browser) or ImageOptim (Mac).
 
 **Common mistake — PNG for photos:**  
 PNG is lossless and correct for logos/graphics with transparency. For photographs it produces files 5–10× larger than JPEG at the same visual quality. Always use JPEG or WebP for photos.
