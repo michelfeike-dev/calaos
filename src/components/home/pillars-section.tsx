@@ -1,7 +1,5 @@
-'use client'
-
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { cn } from '@/lib/utils'
 
 export interface Pillar {
   src: string
@@ -17,12 +15,19 @@ interface PillarsSectionProps {
   wide?: boolean
 }
 
-const ease = [0.25, 0.1, 0.25, 1] as const
+// CSS entrance (tw-animate-css). Runs at first paint — no JS gating — so the
+// LCP wordmark becomes visible immediately. Disabled for reduced-motion users
+// (content is then shown in its natural, fully visible state).
+const enter =
+  'motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-3 motion-safe:fill-mode-both motion-safe:duration-700'
 
 export function PillarsSection({ pillars, cta, border = false, wide = false }: PillarsSectionProps) {
   const cols =
     pillars.length >= 3 ? 'sm:grid-cols-3' : pillars.length === 2 ? 'sm:grid-cols-2' : 'sm:grid-cols-1'
   const isExternal = cta ? /^(https?:|mailto:)/.test(cta.href) : false
+
+  const ctaClasses =
+    'text-center text-base text-white/40 transition-colors duration-150 hover:text-blue-400 sm:text-sm'
 
   return (
     <section
@@ -41,46 +46,34 @@ export function PillarsSection({ pillars, cta, border = false, wide = false }: P
       >
         <div className={`grid grid-cols-1 gap-10 ${cols} sm:gap-8`}>
           {pillars.map(({ src, alt, sub }, i) => (
-            <motion.div
+            <div
               key={alt}
-              className="flex flex-col items-center gap-4"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 1.1, ease, delay: i * 0.2 }}
+              className={cn('flex flex-col items-center gap-4', enter)}
+              style={{ animationDelay: `${i * 120}ms` }}
             >
               {/* SVG-Schriftzug — kein next/image nötig (vektoriell, winzig) */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={src} alt={alt} className="w-full" draggable={false} />
               <p className="text-xs uppercase tracking-widest text-blue-400/70">{sub}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {cta && (
-          <motion.div
-            className="mt-10 flex flex-col items-center sm:mt-16"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 1.1, ease, delay: 0.6 }}
+          <div
+            className={cn('mt-10 flex flex-col items-center sm:mt-16', enter)}
+            style={{ animationDelay: `${pillars.length * 120}ms` }}
           >
             {isExternal ? (
-              <a
-                href={cta.href}
-                className="text-center text-base text-white/40 transition-colors duration-150 hover:text-blue-400 sm:text-sm"
-              >
+              <a href={cta.href} className={ctaClasses}>
                 {cta.text}
               </a>
             ) : (
-              <Link
-                href={cta.href}
-                className="text-center text-base text-white/40 transition-colors duration-150 hover:text-blue-400 sm:text-sm"
-              >
+              <Link href={cta.href} className={ctaClasses}>
                 {cta.text}
               </Link>
             )}
-          </motion.div>
+          </div>
         )}
       </div>
     </section>
