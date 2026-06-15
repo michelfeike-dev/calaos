@@ -44,6 +44,15 @@ export function PostCard({ post, featured = false }: PostCardProps) {
                 Featured
               </span>
             </div>
+
+            {/* Draft marker — only ever rendered in local dev */}
+            {!post.published && (
+              <div className="absolute left-6 top-5">
+                <span className="rounded-full border border-amber-400/30 bg-amber-400/10 px-2.5 py-1 text-[10px] font-medium uppercase tracking-widest text-amber-300">
+                  Entwurf
+                </span>
+              </div>
+            )}
           </div>
         </Link>
       </article>
@@ -61,6 +70,15 @@ export function PostCard({ post, featured = false }: PostCardProps) {
             'hover:border-white/[0.16] hover:border-l-blue-400/50 hover:bg-[#242424]',
           ].join(' ')}
         >
+          {/* Draft marker — only ever rendered in local dev */}
+          {!post.published && (
+            <div className="absolute right-5 top-5">
+              <span className="rounded-full border border-amber-400/30 bg-amber-400/10 px-2.5 py-1 text-[10px] font-medium uppercase tracking-widest text-amber-300">
+                Entwurf
+              </span>
+            </div>
+          )}
+
           {/* Title */}
           <h2 className="font-display mb-3 text-2xl font-normal leading-snug tracking-tight text-white transition-colors duration-150 group-hover:text-blue-400 sm:text-3xl">
             {post.title}

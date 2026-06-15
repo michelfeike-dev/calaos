@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { getAllPosts, getPostBySlug } from '@/lib/posts'
+import { DRAFTS_VISIBLE, getAllPosts, getPostBySlug } from '@/lib/posts'
 import { compileMdxContent } from '@/lib/mdx'
 import { getMdxComponents } from '@/components/mdx/mdx-components'
 import { PostHeader } from '@/components/blog/post-header'
@@ -53,6 +53,8 @@ export default async function PostPage({ params }: Props) {
   const { slug } = await params
   const post = getPostBySlug(slug)
   if (!post) notFound()
+  // Drafts are previewable locally but never reachable in production.
+  if (!post.published && !DRAFTS_VISIBLE) notFound()
 
   const { content } = await compileMdxContent(post.content, getMdxComponents())
 

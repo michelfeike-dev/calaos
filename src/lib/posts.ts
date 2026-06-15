@@ -6,9 +6,16 @@ import type { Post, PostWithContent } from '@/types/post'
 
 const POSTS_DIR = path.join(process.cwd(), 'src/content/posts')
 
+/**
+ * Drafts (`published: false`) are visible in local development for previewing,
+ * but never in production (not listed, and 404 on direct URL — see [slug]/page).
+ */
+export const DRAFTS_VISIBLE = process.env.NODE_ENV !== 'production'
+
 function getPostFiles(): string[] {
   if (!fs.existsSync(POSTS_DIR)) return []
-  return fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith('.mdx'))
+  // Files starting with "_" (e.g. _template.mdx) are not treated as posts.
+  return fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith('.mdx') && !f.startsWith('_'))
 }
 
 export function getAllPosts(): Post[] {
@@ -37,7 +44,7 @@ export function getAllPosts(): Post[] {
         wordCount: stats.words,
       } satisfies Post
     })
-    .filter((post) => post.published)
+    .filter((post) => post.published || DRAFTS_VISIBLE)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
   return posts

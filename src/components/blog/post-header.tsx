@@ -11,6 +11,13 @@ export function PostHeader({ post }: PostHeaderProps) {
   return (
     <header className="mb-14 text-center">
 
+      {/* Draft marker — only ever rendered in local dev (drafts 404 in prod) */}
+      {!post.published && (
+        <p className="mx-auto mb-6 w-fit rounded-full border border-amber-400/30 bg-amber-400/10 px-3 py-1 text-xs font-medium uppercase tracking-widest text-amber-300">
+          Entwurf · nicht veröffentlicht
+        </p>
+      )}
+
       {/* Title */}
       <h1 className="font-display mx-auto mb-7 max-w-3xl text-5xl font-normal leading-tight tracking-tight text-white sm:text-6xl lg:text-[4.25rem]">
         {post.title}
