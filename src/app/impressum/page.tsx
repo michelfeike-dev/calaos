@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'impressum',
   description: 'Impressum für calaos.me',
+  alternates: { canonical: '/impressum' },
 }
 
 export default function ImpressumPage() {

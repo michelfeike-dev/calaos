@@ -4,6 +4,7 @@ import { NewsletterForm, type InitialStatus } from '@/components/shared/newslett
 export const metadata: Metadata = {
   title: 'brief',
   description: 'kein Bullshit. keine Werbung, kein Spam.',
+  alternates: { canonical: '/newsletter' },
 }
 
 const VALID_STATUSES: InitialStatus[] = ['confirmed', 'unsubscribed', 'invalid']

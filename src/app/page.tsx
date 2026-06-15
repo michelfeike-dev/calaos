@@ -4,6 +4,7 @@ import { PillarsSection } from '@/components/home/pillars-section'
 export const metadata: Metadata = {
   title: { absolute: 'calaos.' },
   description: 'calma für innere stärke. chaos für flügel. leben — dein weg.',
+  alternates: { canonical: '/' },
 }
 
 const pillars = [

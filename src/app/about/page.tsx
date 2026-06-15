@@ -9,6 +9,7 @@ import { notFound } from 'next/navigation'
 export const metadata: Metadata = {
   title: 'about',
   description: 'Michel teilt seine Reise von chaotischer Kindheit in Bayern über Berlin-Partys zur authentischen Freiheit.',
+  alternates: { canonical: '/about' },
 }
 
 export default async function AboutPage() {

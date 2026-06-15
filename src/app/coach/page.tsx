@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'coach',
   description: 'Coaching — komm näher. lass uns sprechen.',
+  alternates: { canonical: '/coach' },
 }
 
 export default function CoachPage() {

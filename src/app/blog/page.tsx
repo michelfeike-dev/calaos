@@ -6,6 +6,7 @@ import { TagFilter } from '@/components/blog/tag-filter'
 export const metadata: Metadata = {
   title: 'blog',
   description: 'Writings on visual design, creative process, and the details that matter.',
+  alternates: { canonical: '/blog' },
 }
 
 export default function BlogPage() {
