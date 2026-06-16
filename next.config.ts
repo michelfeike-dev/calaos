@@ -45,6 +45,10 @@ const nextConfig: NextConfig = {
       },
     ]
   },
+  async redirects() {
+    // Page renamed coach → mentor; keep old URL working (308).
+    return [{ source: '/coach', destination: '/mentor', permanent: true }]
+  },
 }
 
 export default nextConfig

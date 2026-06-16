@@ -34,18 +34,18 @@ export function Header() {
           </Link>
         </div>
 
-        {/* Right — coach */}
+        {/* Right — mentor */}
         <div className="flex items-center justify-end">
           <Link
-            href="/coach"
+            href="/mentor"
             className={cn(
               'text-sm font-medium tracking-wide transition-colors duration-150',
-              pathname === '/coach'
+              pathname === '/mentor'
                 ? 'text-white'
                 : 'text-white/40 hover:text-blue-400'
             )}
           >
-            coach
+            mentor
           </Link>
         </div>
 

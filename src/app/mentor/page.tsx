@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'coach',
-  description: 'Coaching — komm näher. lass uns sprechen.',
-  alternates: { canonical: '/coach' },
+  title: 'mentor',
+  description: 'Mentoring — komm näher. lass uns sprechen.',
+  alternates: { canonical: '/mentor' },
 }
 
-export default function CoachPage() {
+export default function MentorPage() {
   return (
     <div className="flex flex-1 items-center justify-center px-6">
       <a
