@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 
-const items = [{ href: '/buecher', label: 'bücher' }]
+const items = [{ href: '/buecher', label: 'BOOKS' }]
 
 export function SourceMenu() {
   const pathname = usePathname()
