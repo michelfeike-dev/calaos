@@ -18,20 +18,6 @@ export function BookCard({ book }: BookCardProps) {
         'hover:border-white/[0.16] hover:border-l-blue-400/50 hover:bg-[#242424]',
       ].join(' ')}
     >
-      {/* Tags */}
-      {book.tags.length > 0 && (
-        <div className="mb-4 flex flex-wrap gap-1.5">
-          {book.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded-full bg-white/[0.06] px-2.5 py-0.5 text-[11px] font-medium text-white/40"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      )}
-
       {/* Title */}
       <h2 className="font-display mb-3 text-2xl font-normal leading-snug tracking-tight text-white transition-colors duration-150 group-hover:text-blue-400 sm:text-3xl">
         {book.title}
@@ -42,8 +28,8 @@ export function BookCard({ book }: BookCardProps) {
         {book.description}
       </p>
 
-      {/* Footer — author */}
-      <div className="text-xs text-white/30">{book.author}</div>
+      {/* Footer — author (right, blue — like the blog post date) */}
+      <div className="text-right text-xs text-blue-400/60">{book.author}</div>
     </div>
   )
 
