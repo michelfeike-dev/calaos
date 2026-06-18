@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { CalaosLogo } from '@/components/shared/calaos-logo'
+import { SourceMenu } from '@/components/layout/source-menu'
 import { cn } from '@/lib/utils'
 
 export function Header() {
@@ -12,8 +13,8 @@ export function Header() {
     <header className="fixed top-4 left-1/2 z-50 w-[calc(100%-2rem)] max-w-5xl -translate-x-1/2">
       <div className="grid h-14 grid-cols-3 items-center rounded-2xl border border-white/[0.08] bg-[#1c1c1c]/75 px-6 shadow-[0_4px_24px_rgba(0,0,0,0.4)] backdrop-blur-xl">
 
-        {/* Left — blog */}
-        <div className="flex items-center">
+        {/* Left — blog + source */}
+        <div className="flex items-center gap-5">
           <Link
             href="/blog"
             className={cn(
@@ -25,6 +26,7 @@ export function Header() {
           >
             blog
           </Link>
+          <SourceMenu />
         </div>
 
         {/* Center — Logo */}
