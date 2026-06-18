@@ -7,27 +7,11 @@ import type { Book } from '@/types/book'
  */
 export const books: Book[] = [
   {
-    title: 'Trust Chaos',
+    title: '101 Essays, die dein Leben verändern werden',
     description:
-      'Über den Mut, Verantwortung zu übernehmen und die Komfortzone bewusst zu verlassen.',
-    author: 'Dr. Christian Zippel',
-    tags: ['chaos', 'wachstum'],
-    url: '/blog',
-  },
-  {
-    title: 'Die Kunst des Liebens',
-    description:
-      'Liebe als Haltung und Fähigkeit, nicht als Zufall — ein Klassiker über Selbst und Beziehung.',
-    author: 'Erich Fromm',
-    tags: ['calma', 'philosophie'],
-    url: '/blog',
-  },
-  {
-    title: 'Die 1%-Methode',
-    description:
-      'Wie kleine Gewohnheiten über die Zeit zu großer Veränderung führen.',
-    author: 'James Clear',
-    tags: ['wachstum', 'gewohnheiten'],
+      'Ich: am Tiefpunkt. Keine Erwartungen. Psychische Gesundheit, emotionale Intelligenz, Wachstum – Begriffe, die ich sonst abgetan hätte. Was harmlos begann, kippte schnell. Keine sanften Erkenntnisse, sondern ein Schlag in die Fresse. Tiefe Fragen – keine Antworten. Das Buch bestätigte nur, was ich längst wusste. Keine Perspektive. Ich war lost. Das Buch hat mir nichts erklärt. Es hat mich nur dahin gebracht, wo ich selbst hinschauen musste.',
+    author: 'Brianna Wiest',
+    tags: ['wachstum', 'chaos'],
     url: '/blog',
   },
 ]
