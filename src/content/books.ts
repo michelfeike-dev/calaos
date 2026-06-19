@@ -14,4 +14,12 @@ export const books: Book[] = [
     tags: ['wachstum', 'chaos'],
     url: '/blog',
   },
+  {
+    title: 'Trust Chaos',
+    description:
+      'Die Zeilen, die meinen Weg am stärksten geprägt haben. Ich lebe sie. Sie sind Teil meiner Identität geworden. Entscheidungen, die mich aus alten Mustern herausgeführt haben – Reisen, Neuanfänge, Risiken und persönliche Entwicklung – wurden von den Gedanken dieses Buches beeinflusst. Das Leben beginnt dort, wo man anfängt, mit dem Chaos zu tanzen.',
+    author: 'Dr. Christian Zippel',
+    tags: ['wachstum', 'chaos'],
+    url: '/blog',
+  },
 ]
