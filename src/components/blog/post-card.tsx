@@ -60,11 +60,11 @@ export function PostCard({ post, featured = false }: PostCardProps) {
   }
 
   return (
-    <article className="group">
+    <article className="group h-full">
       <Link href={`/${post.slug}`} className="block h-full">
         <div
           className={[
-            'relative flex aspect-[3/2] flex-col overflow-hidden rounded-2xl',
+            'relative flex h-full flex-col rounded-2xl',
             'border border-white/[0.08] border-l-2 border-l-transparent bg-[#1c1c1c]',
             'p-6 transition-all duration-200',
             'hover:border-white/[0.16] hover:border-l-blue-400/50 hover:bg-[#242424]',
@@ -84,8 +84,8 @@ export function PostCard({ post, featured = false }: PostCardProps) {
             {post.title}
           </h2>
 
-          {/* Description */}
-          <p className="mb-4 flex-1 text-sm leading-relaxed text-white/50 line-clamp-3">
+          {/* Description — full text, no truncation */}
+          <p className="mb-4 flex-1 text-sm leading-relaxed text-white/50">
             {post.description}
           </p>
 
