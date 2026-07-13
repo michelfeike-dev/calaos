@@ -12,7 +12,7 @@ export function BookCard({ book }: BookCardProps) {
   const card = (
     <div
       className={[
-        'group flex aspect-[3/2] flex-col overflow-hidden rounded-2xl',
+        'group flex h-full flex-col rounded-2xl',
         'border border-white/[0.08] border-l-2 border-l-transparent bg-[#1c1c1c]',
         'p-6 transition-all duration-200',
         'hover:border-white/[0.16] hover:border-l-blue-400/50 hover:bg-[#242424]',
@@ -23,8 +23,8 @@ export function BookCard({ book }: BookCardProps) {
         {book.title}
       </h2>
 
-      {/* Description */}
-      <p className="mb-4 flex-1 text-sm leading-relaxed text-white/50 line-clamp-3">
+      {/* Description — full text, no truncation */}
+      <p className="mb-4 flex-1 text-sm leading-relaxed text-white/50">
         {book.description}
       </p>
 
@@ -34,7 +34,7 @@ export function BookCard({ book }: BookCardProps) {
   )
 
   return (
-    <article>
+    <article className="h-full">
       {isExternal ? (
         <a href={href} target="_blank" rel="noopener noreferrer" className="block h-full">
           {card}
