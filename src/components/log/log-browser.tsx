@@ -48,7 +48,7 @@ export function LogBrowser({ entries, tags }: LogBrowserProps) {
       {filtered.length === 0 ? (
         <p className="py-16 text-center text-sm text-white/30">noch keine Einträge.</p>
       ) : (
-        <div className="space-y-8">
+        <div className="space-y-4">
           {filtered.map((entry) => (
             <LogEntry key={`${entry.date}-${entry.title}`} entry={entry} />
           ))}
