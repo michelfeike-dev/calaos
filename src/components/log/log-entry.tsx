@@ -27,7 +27,7 @@ export function LogEntry({ entry }: LogEntryProps) {
       </time>
 
       {/* Title */}
-      <h2 className="font-display mb-3 pr-28 text-2xl font-normal leading-snug tracking-tight text-white sm:text-3xl">
+      <h2 className="font-display mb-3 text-2xl font-normal leading-snug tracking-tight text-white sm:text-3xl">
         {entry.title}
       </h2>
 
