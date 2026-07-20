@@ -7,8 +7,9 @@ interface LogEntryProps {
 
 /**
  * Logbuch-Eintrag in Geometrie und Typografie der Featured-Post-Karte
- * ([post-card.tsx]) — ohne "Featured"-Label, ohne Lesezeit und ohne Hover,
- * da Einträge nicht verlinkt sind. Datum oben rechts, Ort unten rechts.
+ * ([post-card.tsx]) — ohne "Featured"-Label und ohne Hover, da Einträge nicht
+ * verlinkt sind. Fuß spiegelt den Essay-Eintrag: links Ort (wie Lesezeit),
+ * rechts Datum.
  */
 export function LogEntry({ entry }: LogEntryProps) {
   return (
@@ -18,14 +19,6 @@ export function LogEntry({ entry }: LogEntryProps) {
         'border-t-2 border-t-blue-400/30',
       ].join(' ')}
     >
-      {/* Date — top right */}
-      <time
-        dateTime={entry.date}
-        className="absolute right-8 top-6 text-xs text-blue-400/60"
-      >
-        {formatDateShort(entry.date)}
-      </time>
-
       {/* Title */}
       <h2 className="font-display mb-3 text-2xl font-normal leading-snug tracking-tight text-white sm:text-3xl">
         {entry.title}
@@ -34,20 +27,12 @@ export function LogEntry({ entry }: LogEntryProps) {
       {/* Text */}
       <p className="mb-6 text-sm leading-relaxed text-white/50">{entry.text}</p>
 
-      {/* Footer — tags left · place right */}
-      <div className="flex items-center justify-between gap-4 text-xs">
-        <div className="flex flex-wrap gap-1.5">
-          {entry.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded-full bg-white/[0.06] px-2.5 py-0.5 text-[11px] font-medium text-white/30"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        <span className="shrink-0 whitespace-nowrap text-blue-400/60">{entry.ort}</span>
+      {/* Footer — place left · date right (mirrors the essay card) */}
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-white/30">{entry.ort}</span>
+        <time className="text-blue-400/60" dateTime={entry.date}>
+          {formatDateShort(entry.date)}
+        </time>
       </div>
     </article>
   )

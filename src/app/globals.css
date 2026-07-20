@@ -88,6 +88,9 @@ html {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Reserve the scrollbar gutter on every page so short pages (e.g. /log)
+     render at exactly the same content width as long, scrolling ones (/essay). */
+  scrollbar-gutter: stable;
 }
 
 body {
