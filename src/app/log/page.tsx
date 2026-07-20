@@ -18,7 +18,7 @@ export default function LogPage() {
       ) : (
         <div className="flex flex-col gap-4">
           {entries.map((entry) => (
-            <LogEntry key={`${entry.date}-${entry.text.slice(0, 24)}`} entry={entry} />
+            <LogEntry key={`${entry.date}-${entry.title}`} entry={entry} />
           ))}
         </div>
       )}

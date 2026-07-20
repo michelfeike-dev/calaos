@@ -1,4 +1,5 @@
 export interface LogEntry {
+  title: string
   /** Der Eintrag selbst — ein Gedanke, eine Lektion. */
   text: string
   /** Format JJJJ-MM-TT — bestimmt die Sortierung (neueste zuerst). */

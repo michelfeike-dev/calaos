@@ -34,7 +34,7 @@ export function SourceMenu() {
   return (
     <div
       ref={ref}
-      className="relative"
+      className="relative flex items-center"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
