@@ -6,7 +6,7 @@ interface BookCardProps {
 }
 
 export function BookCard({ book }: BookCardProps) {
-  const href = book.url ?? '/blog'
+  const href = book.url ?? '/essay'
   const isExternal = /^(https?:|mailto:)/.test(href)
 
   const card = (

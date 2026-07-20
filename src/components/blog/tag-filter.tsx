@@ -10,7 +10,7 @@ interface TagFilterProps {
   basePath?: string
 }
 
-export function TagFilter({ tags, activeTag, basePath = '/blog' }: TagFilterProps) {
+export function TagFilter({ tags, activeTag, basePath = '/essay' }: TagFilterProps) {
   const pathname = usePathname()
 
   return (

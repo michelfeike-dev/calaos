@@ -53,7 +53,7 @@ export function SourceMenu() {
 
       {/* Panel — small bridge (pt-3) keeps hover alive between trigger and menu */}
       {open && (
-        <div className="absolute left-0 top-full pt-3">
+        <div className="absolute right-0 top-full pt-3">
           <ul
             role="menu"
             className="min-w-32 rounded-xl border border-white/[0.08] bg-[#1c1c1c]/95 p-1.5 shadow-[0_8px_28px_rgba(0,0,0,0.5)] backdrop-blur-xl"

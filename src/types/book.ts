@@ -3,6 +3,6 @@ export interface Book {
   description: string
   tags: string[]
   author: string
-  /** Where the card links to. Defaults to "/blog" when omitted. */
+  /** Where the card links to. Defaults to "/essay" when omitted. */
   url?: string
 }

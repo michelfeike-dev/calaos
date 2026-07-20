@@ -4,12 +4,12 @@ import { PostCard } from '@/components/blog/post-card'
 import { TagFilter } from '@/components/blog/tag-filter'
 
 export const metadata: Metadata = {
-  title: 'blog',
+  title: 'essay',
   description: 'Writings on visual design, creative process, and the details that matter.',
-  alternates: { canonical: '/blog' },
+  alternates: { canonical: '/essay' },
 }
 
-export default function BlogPage() {
+export default function EssayPage() {
   const allPosts = getAllPosts()
   const featuredPost = getFeaturedPost()
   const allTags = getAllTags()
@@ -23,7 +23,7 @@ export default function BlogPage() {
       {/* Tag filter */}
       {allTags.length > 0 && (
         <section className="mb-8">
-          <TagFilter tags={allTags} basePath="/blog" />
+          <TagFilter tags={allTags} basePath="/essay" />
         </section>
       )}
 
