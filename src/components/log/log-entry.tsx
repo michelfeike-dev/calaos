@@ -47,7 +47,7 @@ export function LogEntry({ entry }: LogEntryProps) {
           ))}
         </div>
 
-        <span className="shrink-0 whitespace-nowrap text-white/30">{entry.ort}</span>
+        <span className="shrink-0 whitespace-nowrap text-blue-400/60">{entry.ort}</span>
       </div>
     </article>
   )

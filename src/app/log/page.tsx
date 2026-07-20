@@ -16,7 +16,7 @@ export default function LogPage() {
       {entries.length === 0 ? (
         <p className="py-16 text-center text-sm text-white/30">noch keine Einträge.</p>
       ) : (
-        <div className="flex flex-col gap-4">
+        <div className="space-y-8">
           {entries.map((entry) => (
             <LogEntry key={`${entry.date}-${entry.title}`} entry={entry} />
           ))}
