@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>calaos — Log-Buch Story (Vorlage)</title>
+
+  <!--
+    ────────────────────────────────────────────────────────────────
+    calaos · Instagram-Story-Vorlage für einen Logbuch-Eintrag (9:16)
+    ────────────────────────────────────────────────────────────────
+    So nutzt du sie (siehe auch README.md in diesem Verzeichnis):
+
+    1) Unten im <script> den Block `const entry = { … }` mit dem
+       gewünschten Eintrag füllen (Werte aus log.ts übernehmen).
+       - teaser: KURZ halten (1–3 Sätze) — die Story ist ein Anriss,
+         der volle Text lebt in log.ts / auf calaos.me/log.
+       - nummer: fortlaufender Index des Eintrags (#1, #2, …).
+    2) Diese Datei im Browser öffnen (Doppelklick).
+    3) Oben links „Export 1080×1920" klicken (oder #export an die URL hängen)
+       → Story wird exakt 1080×1920, ohne dunklen Rand.
+    4) Nur die Story aufnehmen (kein schwarzer Rand, volle Auflösung):
+       Safari → Einstellungen → Erweitert → „Funktionen für Webentwickler
+         anzeigen" → Entwickler → Web-Inspector einblenden (Cmd+Opt+I)
+         → Reiter „Elemente" → <div class="story"> per Rechtsklick
+         → „Bildschirmfoto aufnehmen".
+         (Safari hat KEIN Kamera-Symbol im Responsive-Modus.)
+       Chrome/Edge → Rechtsklick auf die Story → „Untersuchen"
+         → <div class="story"> per Rechtsklick → „Capture node screenshot".
+    5) In Instagram als Story hochladen → Sticker → „Link"
+       → https://calaos.me/log über die „weiterlesen"-Zeile setzen.
+
+    Hinweis: Instrument Serif wird per CDN geladen (nur beim lokalen
+    Öffnen, nicht auf der Website). Ohne Netz greift ein Serif-Fallback.
+    ────────────────────────────────────────────────────────────────
+  -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #141414;
+      --card: #1c1c1c;
+      --border: rgba(255, 255, 255, 0.08);
+      --accent: #60a5fa;
+      --fg: rgba(255, 255, 255, 0.90);
+      --muted: rgba(255, 255, 255, 0.50);
+      --faint: rgba(255, 255, 255, 0.30);
+      --serif: "Instrument Serif", "Hoefler Text", "Iowan Old Style",
+        "Palatino Linotype", Palatino, Georgia, serif;
+      --sans: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; }
+
+    .stage {
+      display: grid;
+      place-items: center;
+      min-height: 100svh;
+      width: 100%;
+      background:
+        radial-gradient(120% 80% at 50% -10%, rgba(96, 165, 250, 0.06), transparent 60%),
+        #0b0b0b;
+      padding: 2.5vmin;
+    }
+
+    /* 9:16 story frame, fits within the viewport on either axis */
+    .story {
+      --w: min(94vw, calc(94svh * 9 / 16));
+      width: var(--w);
+      height: calc(var(--w) * 16 / 9);
+      container-type: size;
+      position: relative;
+      overflow: hidden;
+      border-radius: 3cqw;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--sans);
+      box-shadow: 0 3vmin 9vmin rgba(0, 0, 0, 0.6);
+    }
+
+    .story::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(90% 45% at 50% 8%, rgba(96, 165, 250, 0.12), transparent 62%);
+      pointer-events: none;
+    }
+
+    .inner {
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 5cqh 8cqw 6cqh; /* stays inside Instagram's top/bottom UI safe zones */
+    }
+
+    /* Header — small white wordmark near the top */
+    .masthead {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3cqh;
+    }
+    .logo { display: block; width: 30cqw; height: auto; }
+    .logo path { fill: #fff; }
+
+    .index {
+      font-size: 3cqw;
+      font-weight: 500;
+      letter-spacing: 0.34em;
+      color: var(--accent);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Entry card — title is the hero, teaser is a short cliffhanger */
+    .card {
+      margin-top: 11cqh;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-top: 2px solid rgba(96, 165, 250, 0.32);
+      border-radius: 3.2cqw;
+      padding: 8cqw;
+      box-shadow: 0 1.5cqw 5cqw rgba(0, 0, 0, 0.35);
+    }
+
+    .entry-title {
+      margin: 0 0 4.5cqh;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 9cqw;
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+      color: var(--fg);
+    }
+
+    .entry-text {
+      margin: 0;
+      font-size: 3.5cqw;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .entry-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 6cqh;
+      font-size: 2.7cqw;
+      letter-spacing: 0.02em;
+    }
+    .entry-foot .place { color: var(--faint); }
+    .entry-foot .date { color: var(--accent); opacity: 0.72; }
+
+    /* Footer prompt — sits low; leave the space below for the IG link sticker */
+    .cta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.6cqh;
+      margin-top: 17cqh;
+      text-align: center;
+    }
+    .cta .prompt {
+      font-size: 2.5cqw;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    /* ── Export mode — exact 1080×1920, no dark frame (for the screenshot) ── */
+    .export-btn {
+      position: fixed;
+      top: 14px;
+      left: 14px;
+      z-index: 20;
+      font: 500 13px/1 system-ui, -apple-system, sans-serif;
+      color: #cbd5e1;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 8px;
+      padding: 9px 13px;
+      cursor: pointer;
+    }
+    body.is-export { background: var(--bg); }
+    body.is-export .export-btn { display: none; }
+    body.is-export .stage {
+      display: block;
+      min-height: 0;
+      padding: 0;
+      background: var(--bg);
+    }
+    body.is-export .story {
+      width: 1080px;
+      height: 1920px;
+      border-radius: 0;
+      box-shadow: none;
+    }
+  </style>
+</head>
+<body>
+  <button class="export-btn" id="exportBtn" type="button">Export 1080×1920</button>
+
+  <div class="stage">
+    <div class="story">
+      <div class="inner">
+
+        <header class="masthead">
+          <svg class="logo" viewBox="0 0 263.95486 83.542962" aria-label="calaos">
+            <g transform="translate(-349.99998,23.542961)">
+              <path
+                transform="matrix(0.75247855,0,0,0.75247855,3501.8729,308.45482)"
+                d="m -4153.0866,-330.18176 q -9.648,0 -17.856,-4.32 -8.064,-4.464 -12.96,-12.672 -4.752,-8.352 -4.752,-20.016 0,-7.488 2.736,-14.544 2.736,-7.056 7.632,-12.672 5.04,-5.76 11.952,-9.072 6.912,-3.312 15.264,-3.312 8.064,0 13.968,2.448 6.048,2.448 9.36,6.48 3.312,4.032 3.312,8.784 0,3.168 -1.728,5.472 -1.728,2.16 -5.04,2.16 -3.6,0.144 -5.184,-2.16 -1.44,-2.448 -1.44,-4.32 0,-1.44 0.432,-2.88 0.432,-1.584 1.728,-2.88 -1.152,-3.456 -4.032,-5.04 -2.88,-1.728 -6.048,-2.16 -3.024,-0.576 -5.04,-0.576 -9.792,0 -16.56,7.92 -6.624,7.776 -6.624,22.752 0,9.648 3.024,17.136 3.168,7.488 8.784,11.808 5.616,4.176 12.96,4.176 6.768,0 12.96,-3.6 6.192,-3.6 9.648,-8.784 l 3.744,2.88 q -3.744,6.048 -9.072,9.792 -5.184,3.744 -10.8,5.472 -5.472,1.728 -10.368,1.728 z m 70.8952,-2.304 q -0.432,-2.448 -0.576,-4.32 -0.144,-1.872 -0.432,-3.888 -4.896,4.896 -10.656,7.776 -5.616,2.736 -11.952,2.736 -10.944,0 -16.272,-4.896 -5.328,-5.04 -5.328,-12.24 0,-6.624 4.032,-11.376 4.176,-4.896 10.656,-7.92 6.624,-3.168 14.256,-4.608 7.776,-1.584 14.976,-1.44 v -8.928 q 0,-5.04 -0.864,-9.504 -0.864,-4.464 -3.744,-7.344 -2.88,-2.88 -9.216,-3.024 -4.176,-0.144 -8.64,1.584 -4.32,1.728 -6.336,5.904 1.152,1.152 1.44,2.736 0.432,1.44 0.432,2.736 0,1.728 -1.44,4.032 -1.44,2.16 -5.04,2.016 -3.024,0 -4.608,-2.016 -1.584,-2.16 -1.584,-5.04 0,-4.896 3.6,-8.784 3.744,-3.888 10.224,-6.192 6.48,-2.304 14.688,-2.304 12.096,0 17.856,6.48 5.76,6.336 5.616,20.16 0,5.328 0,10.8 0,5.328 -0.144,10.8 0,5.328 0,10.8 0,2.304 -0.144,4.608 -0.144,2.304 -0.432,5.184 2.592,-0.144 5.04,-0.288 2.592,-0.144 5.184,-0.288 v 6.048 z m -1.296,-35.28 q -4.896,0.144 -10.368,1.296 -5.328,1.008 -9.936,3.168 -4.464,2.16 -7.344,5.76 -2.736,3.456 -2.592,8.496 0.288,5.328 3.456,8.064 3.312,2.592 7.776,2.592 5.904,0 10.224,-2.16 4.464,-2.304 8.784,-6.336 -0.144,-1.584 -0.144,-3.456 0,-1.872 0,-3.888 0,-0.72 0,-4.608 0.144,-3.888 0.144,-8.928 z m 16.3195,30.96 q 4.464,0 6.192,-2.16 1.728,-2.304 2.016,-6.192 0.288,-4.032 0.288,-9.216 v -68.112 q 0,-2.304 0,-4.32 0.144,-2.16 0.432,-5.04 -2.592,0.144 -5.184,0.288 -2.448,0.144 -5.04,0.288 v -6.048 q 6.336,0 9.792,-0.576 3.6,-0.576 5.328,-1.44 1.872,-0.864 2.88,-1.872 h 4.176 l 0.144,93.456 q 0,2.88 -0.144,5.184 -0.144,2.16 -0.576,4.608 2.304,-0.144 4.464,-0.144 2.304,-0.144 4.608,-0.288 v 5.904 h -29.376 z m 70.3193,4.32 q -0.432,-2.448 -0.576,-4.32 -0.144,-1.872 -0.432,-3.888 -4.896,4.896 -10.656,7.776 -5.616,2.736 -11.952,2.736 -10.944,0 -16.272,-4.896 -5.328,-5.04 -5.328,-12.24 0,-6.624 4.032,-11.376 4.176,-4.896 10.656,-7.92 6.624,-3.168 14.256,-4.608 7.776,-1.584 14.976,-1.44 v -8.928 q 0,-5.04 -0.864,-9.504 -0.864,-4.464 -3.744,-7.344 -2.88,-2.88 -9.216,-3.024 -4.176,-0.144 -8.64,1.584 -4.32,1.728 -6.336,5.904 1.152,1.152 1.44,2.736 0.432,1.44 0.432,2.736 0,1.728 -1.44,4.032 -1.44,2.16 -5.04,2.016 -3.024,0 -4.608,-2.016 -1.584,-2.16 -1.584,-5.04 0,-4.896 3.6,-8.784 3.744,-3.888 10.224,-6.192 6.48,-2.304 14.688,-2.304 12.096,0 17.856,6.48 5.76,6.336 5.616,20.16 0,5.328 0,10.8 0,5.328 -0.144,10.8 0,5.328 0,10.8 0,2.304 -0.144,4.608 -0.144,2.304 -0.432,5.184 2.592,-0.144 5.04,-0.288 2.592,-0.144 5.184,-0.288 v 6.048 z m -1.296,-35.28 q -4.896,0.144 -10.368,1.296 -5.328,1.008 -9.936,3.168 -4.464,2.16 -7.344,5.76 -2.736,3.456 -2.592,8.496 0.288,5.328 3.456,8.064 3.312,2.592 7.776,2.592 5.904,0 10.224,-2.16 4.464,-2.304 8.784,-6.336 -0.144,-1.584 -0.144,-3.456 0,-1.872 0,-3.888 0,-0.72 0,-4.608 0.144,-3.888 0.144,-8.928 z m 53.4716,37.584 q -10.08,0 -18.288,-4.608 -8.208,-4.752 -13.104,-12.96 -4.752,-8.352 -4.752,-19.008 0,-11.376 4.752,-20.448 4.752,-9.072 12.96,-14.256 8.208,-5.328 18.432,-5.328 10.08,0 18.288,4.896 8.208,4.752 13.104,12.96 4.896,8.208 4.896,18.72 0,11.088 -4.896,20.304 -4.752,9.072 -12.96,14.4 -8.208,5.328 -18.432,5.328 z m 1.152,-5.76 q 7.632,0 12.096,-4.32 4.464,-4.32 6.336,-11.232 2.016,-6.912 2.016,-14.544 0,-6.48 -1.296,-12.672 -1.152,-6.336 -3.744,-11.376 -2.592,-5.184 -6.768,-8.208 -4.032,-3.024 -9.792,-3.024 -7.488,0 -12.24,4.32 -4.752,4.32 -7.056,11.232 -2.16,6.912 -2.16,14.832 0,8.928 2.448,16.992 2.448,7.92 7.488,12.96 5.04,5.04 12.672,5.04 z m 62.8312,5.76 q -7.2,0 -12.816,-2.016 -5.616,-1.872 -9.216,-4.32 l 0.576,5.04 h -6.048 l -0.864,-24.768 h 4.464 q 0.288,5.904 3.312,10.656 3.024,4.608 7.776,7.2 4.752,2.592 10.224,2.592 3.744,0 7.344,-1.152 3.6,-1.296 6.048,-3.744 2.448,-2.592 2.448,-6.48 0,-4.032 -2.448,-6.624 -2.304,-2.736 -6.192,-4.752 -3.888,-2.016 -8.352,-3.744 -4.32,-1.728 -8.64,-3.6 -4.32,-1.872 -8.064,-4.464 -3.6,-2.592 -5.76,-6.336 -2.16,-3.744 -2.16,-9.216 0,-3.024 1.152,-6.624 1.152,-3.6 3.888,-6.768 2.736,-3.312 7.488,-5.328 4.752,-2.16 12.096,-2.16 3.888,0 8.64,1.296 4.752,1.296 9.216,4.896 l -0.288,-5.472 h 6.048 v 25.2 h -4.608 q -0.288,-5.04 -2.304,-9.648 -2.016,-4.752 -5.904,-7.776 -3.888,-3.168 -10.08,-3.168 -6.624,0 -10.368,3.312 -3.744,3.312 -3.744,7.632 0,4.464 2.736,7.488 2.88,2.88 7.344,5.04 4.464,2.16 9.504,4.176 5.472,2.304 10.656,5.04 5.184,2.736 8.496,6.912 3.312,4.032 3.312,10.512 0,7.2 -3.744,11.952 -3.6,4.752 -9.36,6.912 -5.616,2.304 -11.808,2.304 z m 34.3193,0 q -3.312,0 -5.904,-2.592 -2.448,-2.736 -2.448,-6.624 0,-3.888 2.592,-6.624 2.592,-2.736 5.904,-2.736 3.6,0 5.904,2.736 2.448,2.736 2.448,6.624 0,3.888 -2.592,6.624 -2.592,2.592 -5.904,2.592 z"
+              />
+            </g>
+          </svg>
+          <div class="index" id="index">#1</div>
+        </header>
+
+        <article class="card">
+          <h2 class="entry-title" id="title">Titel des Eintrags</h2>
+          <p class="entry-text" id="teaser">Kurzer Teaser …</p>
+          <div class="entry-foot">
+            <span class="place" id="place">Ort</span>
+            <time class="date" id="date">Datum</time>
+          </div>
+        </article>
+
+        <footer class="cta">
+          <span class="prompt">weiterlesen</span>
+        </footer>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ─── HIER EINTRAG EINTRAGEN ──────────────────────────────────
+       Werte aus log.ts übernehmen. `teaser` bewusst kurz halten
+       (1–3 Sätze, Anriss), `nummer` = fortlaufender Index.          */
+    const entry = {
+      nummer: 1,
+      titel: 'Mein verletztes Ego, meine Hölle',
+      teaser:
+        'Keine Antwort auf meine Nachricht. Kein Interesse hier. Ein Korb dort. Die Einsamkeit in mir wächst. Mein Ego rast.',
+      ort: 'Berlin',
+      datum: '2026-07-20', // ISO (YYYY-MM-DD) — wird deutsch formatiert
+    }
+    /* ─────────────────────────────────────────────────────────── */
+
+    const formatDatum = (iso) =>
+      new Date(iso + 'T00:00:00').toLocaleDateString('de-DE', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+      })
+
+    document.getElementById('index').textContent = '#' + entry.nummer
+    document.getElementById('title').textContent = entry.titel
+    document.getElementById('teaser').textContent = entry.teaser
+    document.getElementById('place').textContent = entry.ort
+    const dateEl = document.getElementById('date')
+    dateEl.textContent = formatDatum(entry.datum)
+    dateEl.setAttribute('datetime', entry.datum)
+
+    /* Export-Modus: exakt 1080×1920 ohne Rahmen (per Button oder #export). */
+    const setExport = (on) => document.body.classList.toggle('is-export', on)
+    document
+      .getElementById('exportBtn')
+      .addEventListener('click', () =>
+        setExport(!document.body.classList.contains('is-export'))
+      )
+    if (location.hash === '#export') setExport(true)
+  </script>
+</body>
+</html>

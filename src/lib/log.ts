@@ -1,4 +1,4 @@
-import { log } from '@/content/log'
+import { log } from '@/content/log/log'
 import type { LogEntry } from '@/types/log'
 
 /** All log entries, newest first. */
