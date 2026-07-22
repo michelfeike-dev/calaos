@@ -7,7 +7,7 @@ import type { LogEntry } from '@/types/log'
  */
 export const log: LogEntry[] = [
   {
-    title: 'Mein verletztes Ego, meine Hölle',
+    title: 'Mein verletztes Ego, mein Dämon',
     text: 'Keine Antwort auf meine Nachricht. Kein Interesse hier. Ein Korb dort. Die Einsamkeit in mir wächst. Mein Ego rast. Es sucht nach Fehlern. Im Spiegel. Im Außen. Bei Freunden. In der Familie. Die Nadel im Heuhaufen. Overthinking. Menschen, die mir nahestehen, drücke ich weg. Familie. Freunde. Neue Menschen machen mir Angst. Die Einsamkeit nimmt zu. Ich isoliere mich und frage mich gleichzeitig, warum ich mich einsam fühle. Ein Teufelskreis.',
     date: '2026-07-20',
     ort: 'Berlin',

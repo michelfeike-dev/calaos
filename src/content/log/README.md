@@ -77,8 +77,8 @@ Der Text im Bild ist **nur Grafik, nicht klickbar**. Beim Hochladen:
 
 - Story-Editor → **Sticker** (Smiley-Icon) → **„Link"**
   → `https://calaos.me/log` eingeben.
-- Sticker in den **freien Bereich unten** über die `weiterlesen`-Zeile
-  setzen (dafür ist der Platz reserviert).
+- Sticker in den **freien Bereich unten** setzen (dafür ist der Platz
+  reserviert).
 - Zusätzlich sinnvoll: **Link in Bio** aufs Logbuch.
 
 ---
