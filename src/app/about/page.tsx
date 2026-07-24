@@ -27,7 +27,7 @@ export default async function AboutPage() {
 
       <div className="mt-20 border-t border-white/[0.06] pt-10 text-center">
         <a
-          href="mailto:blog@calaos.me"
+          href="mailto:essay@calaos.me"
           className="text-sm text-white/30 transition-colors duration-150 hover:text-blue-400"
         >
           Gedanken dazu? Schreib mir.

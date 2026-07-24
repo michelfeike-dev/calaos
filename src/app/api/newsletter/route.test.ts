@@ -24,7 +24,7 @@ beforeAll(() => {
   process.env.NEXT_PUBLIC_SITE_URL = 'https://calaos.me'
   process.env.RESEND_API_KEY = 're_test'
   process.env.RESEND_AUDIENCE_ID = 'aud_test'
-  process.env.NEWSLETTER_FROM = 'calaos <newsletter@calaos.me>'
+  process.env.NEWSLETTER_FROM = 'calaos <brief@calaos.me>'
 })
 
 beforeEach(() => {
