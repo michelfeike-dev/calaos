@@ -11,7 +11,7 @@ function isActive(href: string, pathname: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`)
 }
 
-export function HamburgerMenu() {
+export function AufbruchMenu() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
@@ -46,27 +46,13 @@ export function HamburgerMenu() {
         type="button"
         aria-haspopup="menu"
         aria-expanded={open}
-        aria-label="Menü"
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          'flex items-center transition-colors duration-150',
-          active || open ? 'text-white' : 'text-white/40 hover:text-blue-400'
+          'text-sm font-medium tracking-wide transition-colors duration-150',
+          active ? 'text-white' : 'text-white/40 hover:text-blue-400'
         )}
       >
-        <svg
-          width="22"
-          height="22"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          aria-hidden="true"
-        >
-          <line x1="3.5" y1="7" x2="20.5" y2="7" />
-          <line x1="3.5" y1="12" x2="20.5" y2="12" />
-          <line x1="3.5" y1="17" x2="20.5" y2="17" />
-        </svg>
+        aufbruch
       </button>
 
       {/* Panel — small bridge (pt-3) keeps hover alive between trigger and menu */}

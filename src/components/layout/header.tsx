@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { CalaosLogo } from '@/components/shared/calaos-logo'
 import { KompassMenu } from '@/components/layout/kompass-menu'
-import { HamburgerMenu } from '@/components/layout/hamburger-menu'
+import { AufbruchMenu } from '@/components/layout/aufbruch-menu'
 
 export function Header() {
   return (
@@ -20,9 +20,9 @@ export function Header() {
           </Link>
         </div>
 
-        {/* Right — hamburger menu (expedition) */}
+        {/* Right — aufbruch (expedition) */}
         <div className="flex items-center justify-end">
-          <HamburgerMenu />
+          <AufbruchMenu />
         </div>
 
       </div>
