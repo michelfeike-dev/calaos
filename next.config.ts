@@ -46,9 +46,10 @@ const nextConfig: NextConfig = {
     ]
   },
   async redirects() {
-    // Page renamed coach → mentor; keep old URL working (308).
+    // Keep old URLs working after renames (308). Page history: coach → mentor → expedition.
     return [
-      { source: '/coach', destination: '/mentor', permanent: true },
+      { source: '/coach', destination: '/expedition', permanent: true },
+      { source: '/mentor', destination: '/expedition', permanent: true },
       { source: '/blog', destination: '/essay', permanent: true },
     ]
   },

@@ -1,14 +1,9 @@
-'use client'
-
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { CalaosLogo } from '@/components/shared/calaos-logo'
 import { KompassMenu } from '@/components/layout/kompass-menu'
-import { cn } from '@/lib/utils'
+import { HamburgerMenu } from '@/components/layout/hamburger-menu'
 
 export function Header() {
-  const pathname = usePathname()
-
   return (
     <header className="fixed top-4 left-1/2 z-50 w-[calc(100%-2rem)] max-w-5xl -translate-x-1/2">
       <div className="grid h-14 grid-cols-3 items-center rounded-2xl border border-white/[0.08] bg-[#1c1c1c]/75 px-6 shadow-[0_4px_24px_rgba(0,0,0,0.4)] backdrop-blur-xl">
@@ -25,19 +20,9 @@ export function Header() {
           </Link>
         </div>
 
-        {/* Right — mentor */}
-        <div className="flex items-center justify-end gap-5">
-          <Link
-            href="/mentor"
-            className={cn(
-              'text-sm font-medium tracking-wide transition-colors duration-150',
-              pathname === '/mentor'
-                ? 'text-white'
-                : 'text-white/40 hover:text-blue-400'
-            )}
-          >
-            mentor
-          </Link>
+        {/* Right — hamburger menu (expedition) */}
+        <div className="flex items-center justify-end">
+          <HamburgerMenu />
         </div>
 
       </div>
