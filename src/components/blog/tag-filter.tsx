@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { cn } from '@/lib/utils'
+import { cn, tagToSlug } from '@/lib/utils'
 
 interface TagFilterProps {
   tags: string[]
@@ -29,7 +29,7 @@ export function TagFilter({ tags, activeTag, basePath = '/essay' }: TagFilterPro
       {tags.map((tag) => (
         <Link
           key={tag}
-          href={`/tag/${tag}`}
+          href={`/tag/${tagToSlug(tag)}`}
           className={cn(
             'rounded-full px-3 py-1 text-xs font-medium transition-colors duration-150',
             activeTag === tag

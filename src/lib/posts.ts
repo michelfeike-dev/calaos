@@ -3,6 +3,7 @@ import path from 'path'
 import matter from 'gray-matter'
 import readingTime from 'reading-time'
 import type { Post, PostWithContent } from '@/types/post'
+import { tagToSlug } from '@/lib/utils'
 
 const POSTS_DIR = path.join(process.cwd(), 'src/content/posts')
 
@@ -84,6 +85,11 @@ export function getAllTags(): string[] {
 
 export function getPostsByTag(tag: string): Post[] {
   return getAllPosts().filter((p) => p.tags.includes(tag))
+}
+
+/** Resolve a URL slug (e.g. "identitaet") back to its display tag ("identität"). */
+export function getTagBySlug(slug: string): string | undefined {
+  return getAllTags().find((tag) => tagToSlug(tag) === slug)
 }
 
 export function getFeaturedPost(): Post | undefined {

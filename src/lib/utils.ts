@@ -30,6 +30,23 @@ export function slugify(text: string): string {
     .trim()
 }
 
+/**
+ * URL-Slug für Tags: Umlaute → ae/oe/ue, ß → ss, damit Tag-URLs rein ASCII
+ * bleiben (kein Prozent-Encoding → robustes statisches Routing, auch für
+ * künftige Umlaut-Tags). Das Anzeige-Label bleibt der Original-Tag.
+ */
+export function tagToSlug(tag: string): string {
+  return tag
+    .toLowerCase()
+    .replace(/ä/g, 'ae')
+    .replace(/ö/g, 'oe')
+    .replace(/ü/g, 'ue')
+    .replace(/ß/g, 'ss')
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]+/g, '')
+    .replace(/--+/g, '-')
+}
+
 export function absoluteUrl(path: string): string {
   return `${process.env.NEXT_PUBLIC_SITE_URL ?? 'https://calaos.me'}${path}`
 }
