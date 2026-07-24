@@ -5,14 +5,24 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 
-const items = [{ href: '/buecher', label: 'books' }]
+const items = [
+  { href: '/essay', label: 'essay' },
+  { href: '/log', label: 'log' },
+  { href: '/buecher', label: 'book' },
+]
 
-export function SourceMenu() {
+/** Whether a nav item matches the current path (essay also owns the tag pages). */
+function isActive(href: string, pathname: string): boolean {
+  if (href === '/essay') return pathname === '/essay' || pathname.startsWith('/tag/')
+  return pathname === href || pathname.startsWith(`${href}/`)
+}
+
+export function KompassMenu() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
-  const active = items.some((i) => pathname.startsWith(i.href))
+  const active = items.some((i) => isActive(i.href, pathname))
 
   // Close on outside click / Escape (for the tap-to-open path on touch devices)
   useEffect(() => {
@@ -48,12 +58,12 @@ export function SourceMenu() {
           active ? 'text-white' : 'text-white/40 hover:text-blue-400'
         )}
       >
-        source
+        kompass
       </button>
 
       {/* Panel — small bridge (pt-3) keeps hover alive between trigger and menu */}
       {open && (
-        <div className="absolute right-0 top-full pt-3">
+        <div className="absolute left-0 top-full pt-3">
           <ul
             role="menu"
             className="min-w-32 rounded-xl border border-white/[0.08] bg-[#1c1c1c]/95 p-1.5 shadow-[0_8px_28px_rgba(0,0,0,0.5)] backdrop-blur-xl"
@@ -66,7 +76,7 @@ export function SourceMenu() {
                   onClick={() => setOpen(false)}
                   className={cn(
                     'block rounded-lg px-3 py-1.5 text-sm transition-colors duration-150',
-                    pathname.startsWith(href)
+                    isActive(href, pathname)
                       ? 'text-white'
                       : 'text-white/40 hover:bg-white/[0.04] hover:text-blue-400'
                   )}
