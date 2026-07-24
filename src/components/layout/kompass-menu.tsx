@@ -6,9 +6,9 @@ import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 
 const items = [
-  { href: '/essay', label: 'essay' },
-  { href: '/log', label: 'log' },
-  { href: '/buecher', label: 'book' },
+  { href: '/essay', label: 'essays' },
+  { href: '/log', label: 'logbuch' },
+  { href: '/buecher', label: 'bücher' },
 ]
 
 /** Whether a nav item matches the current path (essay also owns the tag pages). */
