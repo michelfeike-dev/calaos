@@ -8,6 +8,13 @@ import type { LogEntry } from '@/types/log'
  */
 export const log: LogEntry[] = [
   {
+    title: 'Der Korb, der zum Marathon wurde',
+    text: 'Das Date? 21km laufen. Fair enough. Nicht die beste Idee, Dating und Marathonvorbereitung zu verbinden. „Knöchel tut weh." Egal. Ich mach mein Ding. Meine Beine fliegen über das Tempelhofer Feld. Runner High setzt ein. Ich halluziniere – sehe meine Freunde, wie sie mich nach einem Marathon im Ziel feiern. Marathon? Wieso nicht einfach jetzt? Just do it. Ein Glaubenssatz, den ich mir die letzten Monate ins Gehirn gebrannt habe. Wie? Machen. Machen. Machen. Die Realität holt mich aus dem Traum. Eine Stimme ruft mir entgegen: „Du Rakete!" Mein Date, auf ihrem Fahrrad, mit ihrer Freundin. Ihre Worte motivieren mich. Fuck it. Ich laufe die 42km. Die letzten Kilometer die Hölle für meine Hüften. Schreiend erreiche ich das Ziel, hake die Chaos-Aufgabe ab. Mit Schmerzen wälze ich mich durch die Nacht, wache morgens grinsend auf. Selbstbewusstsein-Booster.',
+    date: '2026-07-26',
+    ort: 'Berlin',
+    tags: ['chaos'],
+  },
+  {
     title: 'Niemand macht etwas',
     text: 'Ein Mann in meinem Alter sitzt in der U-Bahn. Blick auf den Boden. Die Tränen laufen ihm herunter. Von Station zu Station beobachte ich ihn. Ich wünschte, ich könnte ihm helfen, ihn umarmen, menschlich sein. Ich zögere. Alle zögern. Niemand macht etwas. Wieso? Ich sammle meinen Mut, stehe auf und frage ihn, ob er eine Umarmung braucht. Er lehnt zuerst ab. Dann ändert er seine Meinung. Wir umarmen uns. Ich spüre seine Trauer, seine Verzweiflung. Er krallt sich an mich. Ich versuche, ihm Halt zu geben. Er freut sich zutiefst, bedankt sich einige Male. Wir verlassen die Bahn.',
     date: '2026-07-22',
