@@ -61,12 +61,12 @@ export function NewsletterForm({ className, initialStatus }: NewsletterFormProps
     )}>
       {/* Header */}
       <p className="font-display mb-3 text-2xl font-normal tracking-tight text-white">
-        Ein Brief aus calma und chaos.
+        Ein Brief aus calaos.
       </p>
 
       {/* Description */}
       <p className="mb-6 text-sm leading-relaxed text-white/50">
-        Ehrliche Gedanken, Abenteuer und Erfahrungen. Lektionen aus Niederlagen, Herausforderungen und Neuanfängen.
+        Ehrliche Gedanken, echte Emotionen und Abenteuer. Für Menschen, die glauben, dass manche Antworten erst entstehen, wenn man losgeht.
       </p>
 
       {status === 'success' ? (
