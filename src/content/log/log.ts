@@ -8,6 +8,13 @@ import type { LogEntry } from '@/types/log'
  */
 export const log: LogEntry[] = [
   {
+    title: 'Rübergehen',
+    text: 'Ich laufe durch die Weserstraße in Neukölln. Bars. Menschen. Alkohol. Mein Kopf erzählt mir eine Geschichte: Alle haben Spaß. Alle sind glücklich. Alle sind zufrieden. Ich bleibe stehen, beobachte eine Bar von der anderen Straßenseite. Ein Teil von mir will hinein. Sich betrinken. Eine Frau kennenlernen. Einen One-Night-Stand haben. Dann meldet sich eine andere Stimme: Und morgen? Kater. Leere. Du wirst alt. Langweilig. Die anderen leben und du gehst nach Hause. Ich gehe rüber. Setze mich an die Bar. Ein Bier in der Hand. Ich schaue mich um. Die Gespräche wirken oberflächlich. Es riecht nach Rauch. Die Musik ist zu laut, das Bier zu teuer. Ich trinke aus. Stehe auf. Gehe nach Hause. Vielleicht habe ich an diesem Abend nicht das Nachtleben verlassen. Vielleicht habe ich nur eine Fantasie verlassen.',
+    date: '2026-07-30',
+    ort: 'Berlin',
+    tags: ['identität', 'selbstwert', 'emotionen'],
+  },
+  {
     title: 'Der Korb, der zum Marathon wurde',
     text: 'Das Date? 21km laufen. Fair enough. Nicht die beste Idee, Dating und Marathonvorbereitung zu verbinden. „Knöchel tut weh." Egal. Ich mach mein Ding. Meine Beine fliegen über das Tempelhofer Feld. Runner High setzt ein. Ich halluziniere – sehe meine Freunde, wie sie mich nach einem Marathon im Ziel feiern. Marathon? Wieso nicht einfach jetzt? Just do it. Ein Glaubenssatz, den ich mir die letzten Monate ins Gehirn gebrannt habe. Wie? Machen. Machen. Machen. Die Realität holt mich aus dem Traum. Eine Stimme ruft mir entgegen: „Du Rakete!" Mein Date, auf ihrem Fahrrad, mit ihrer Freundin. Ihre Worte motivieren mich. Fuck it. Ich laufe die 42km. Die letzten Kilometer die Hölle für meine Hüften. Schreiend erreiche ich das Ziel, hake die Chaos-Aufgabe ab. Mit Schmerzen wälze ich mich durch die Nacht, wache morgens grinsend auf. Selbstbewusstsein-Booster.',
     date: '2026-07-26',
