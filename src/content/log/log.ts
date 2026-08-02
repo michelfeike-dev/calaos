@@ -8,6 +8,13 @@ import type { LogEntry } from '@/types/log'
  */
 export const log: LogEntry[] = [
   {
+    title: 'Raus aus der Wolldecke',
+    text: 'Leben bedeutet für mich Bewegung. Was lebt, bewegt sich. Entwickelt sich. Stillstand macht krank. Leblos. Neue Experimente. Neue Herausforderungen. Neue Abenteuer. Meine persönliche Lebendigkeit. Raus aus der Komfortzone, rein ins Leben. Stillstand zu erkennen ist schwer. Er schleicht sich leise ein. Unser Gehirn? Liebt das Vertraute. Sicherheit. Routine. Komfort. Selbst wenn es dort unglücklich ist. Es verarscht uns. Deutschland? Meine Heimat. Meine Komfortzone. Sicherheit. Die Angst vor dem Unbekannten, dem Neuen, ist groß. Mein Gehirn lenkt ab. Vernünftig sein. Nichts da. Ich hau ab.',
+    date: '2026-07-31',
+    ort: 'Berlin',
+    tags: ['chaos', 'freiheit', 'abenteuer'],
+  },
+  {
     title: 'Rübergehen',
     text: 'Ich laufe durch die Weserstraße in Neukölln. Bars. Menschen. Alkohol. Mein Kopf erzählt mir eine Geschichte: Alle haben Spaß. Alle sind glücklich. Alle sind zufrieden. Ich bleibe stehen, beobachte eine Bar von der anderen Straßenseite. Ein Teil von mir will hinein. Sich betrinken. Eine Frau kennenlernen. Einen One-Night-Stand haben. Dann meldet sich eine andere Stimme: Und morgen? Kater. Leere. Du wirst alt. Langweilig. Die anderen leben und du gehst nach Hause. Ich gehe rüber. Setze mich an die Bar. Ein Bier in der Hand. Ich schaue mich um. Die Gespräche wirken oberflächlich. Es riecht nach Rauch. Die Musik ist zu laut, das Bier zu teuer. Ich trinke aus. Stehe auf. Gehe nach Hause. Vielleicht habe ich an diesem Abend nicht das Nachtleben verlassen. Vielleicht habe ich nur eine Fantasie verlassen.',
     date: '2026-07-30',
