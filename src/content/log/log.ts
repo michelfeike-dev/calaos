@@ -8,6 +8,13 @@ import type { LogEntry } from '@/types/log'
  */
 export const log: LogEntry[] = [
   {
+    title: 'Die Gedankenwelt',
+    text: 'Das Gedankenkarussell dreht sich. Den ganzen Tag. 24/7. Konstruktiv oder destruktiv? Positiv oder negativ? Was denken andere von mir? Fehler der Vergangenheit. Zukunftsszenarien. Spekulationen. Glaubenssätze. Stopp. Sind diese Gedanken die Wahrheit? Oder nur Geschichten, die mein Gehirn erzählt? Verbessern sie mein Leben? Oder rauben sie nur Energie?',
+    date: '2026-08-05',
+    ort: 'Berlin',
+    tags: ['emotionen', 'meditation', 'selbstwert'],
+  },
+  {
     title: 'Raus aus der Wolldecke',
     text: 'Leben bedeutet für mich Bewegung. Was lebt, bewegt sich. Entwickelt sich. Stillstand macht krank. Leblos. Neue Experimente. Neue Herausforderungen. Neue Abenteuer. Meine persönliche Lebendigkeit. Raus aus der Komfortzone, rein ins Leben. Stillstand zu erkennen ist schwer. Er schleicht sich leise ein. Unser Gehirn? Liebt das Vertraute. Sicherheit. Routine. Komfort. Selbst wenn es dort unglücklich ist. Es verarscht uns. Deutschland? Meine Heimat. Meine Komfortzone. Sicherheit. Die Angst vor dem Unbekannten, dem Neuen, ist groß. Mein Gehirn lenkt ab. Vernünftig sein. Nichts da. Ich hau ab.',
     date: '2026-07-31',
