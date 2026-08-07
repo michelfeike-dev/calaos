@@ -8,6 +8,13 @@ import type { LogEntry } from '@/types/log'
  */
 export const log: LogEntry[] = [
   {
+    title: 'Jubiläumsgrat',
+    text: 'Ich sitze im Café und krame in Erinnerungen aus der Fastenzeit. Schreibe am Essay. Plötzlich fährt ein Typ auf einer umgebauten BMW K80 vor. Café Racer. Er steigt vom Bike, nimmt seinen Backpack vom Rücken und läuft in Richtung Café. „Cooler Dude. Genau mein Vibe.“ Wir schauen uns gegenseitig an. „Geile Maschine.“ Er bestellt und setzt sich neben mich. Wir kommen ins Gespräch. Er erzählt mir von seinem Abenteuer am letzten Wochenende in den Alpen. Jubiläumsgrat. Das Fundament wurde gelegt. Tage später informiere ich mich. Die Bilder: rough. Die Wanderung am Grat. Die steilen Felsen. Genau mein Ding. Mein Körper im Ausnahmezustand. Wann wird es soweit sein? Wer ist mit am Start?',
+    date: '2026-08-06',
+    ort: 'Berlin',
+    tags: ['abenteuer', 'natur', 'chaos'],
+  },
+  {
     title: 'Die Gedankenwelt',
     text: 'Das Gedankenkarussell dreht sich. Den ganzen Tag. 24/7. Konstruktiv oder destruktiv? Positiv oder negativ? Was denken andere von mir? Fehler der Vergangenheit. Zukunftsszenarien. Spekulationen. Glaubenssätze. Stopp. Sind diese Gedanken die Wahrheit? Oder nur Geschichten, die mein Gehirn erzählt? Verbessern sie mein Leben? Oder rauben sie nur Energie?',
     date: '2026-08-05',
