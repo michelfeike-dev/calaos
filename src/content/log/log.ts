@@ -8,6 +8,13 @@ import type { LogEntry } from '@/types/log'
  */
 export const log: LogEntry[] = [
   {
+    title: 'Konfrontation',
+    text: 'Mein längster Freund zu Besuch. Vier Tage. Er kennt meine Morgenroutine. 6:30 Uhr. Wasser trinken. Zähne putzen. Kalte Dusche. Meditation. Ich schließe die Augen. Plötzlich höre ich seine Stimme im Nebenraum. Sein Monolog über Baustellen. Meine Konzentration? Weg. Die Wut kommt hoch. Meine Gedanken rasen. „Keine Rücksicht. Egoistisch.“ Die Konfrontation außerhalb meiner Komfortzone. Verlustangst. Overthinking. Lieber alles ignorieren. Die Schuld bei mir suchen. Emotionen runterschlucken. Kindergarten. Eine Frage der Zeit, bis das Pulverfass explodiert. Also Augen zu und durch. Ein Gespräch. Konfrontation. Das Ergebnis? Seine Einsicht. Eine ehrliche Entschuldigung. Meine Wut entlädt sich. Die Angst vor der Konfrontation war unbegründet. Wie oft vermeiden wir Gespräche, weil wir Angst vor einer Reaktion haben, die am Ende gar nicht kommt? Wem geht\'s genauso?',
+    date: '2026-08-10',
+    ort: 'Berlin',
+    tags: ['beziehungen', 'emotionen', 'verantwortung'],
+  },
+  {
     title: 'Jubiläumsgrat',
     text: 'Ich sitze im Café und krame in Erinnerungen aus der Fastenzeit. Schreibe am Essay. Plötzlich fährt ein Typ auf einer umgebauten BMW K80 vor. Café Racer. Er steigt vom Bike, nimmt seinen Backpack vom Rücken und läuft in Richtung Café. „Cooler Dude. Genau mein Vibe.“ Wir schauen uns gegenseitig an. „Geile Maschine.“ Er bestellt und setzt sich neben mich. Wir kommen ins Gespräch. Er erzählt mir von seinem Abenteuer am letzten Wochenende in den Alpen. Jubiläumsgrat. Das Fundament wurde gelegt. Tage später informiere ich mich. Die Bilder: rough. Die Wanderung am Grat. Die steilen Felsen. Genau mein Ding. Mein Körper im Ausnahmezustand. Wann wird es soweit sein? Wer ist mit am Start?',
     date: '2026-08-06',
