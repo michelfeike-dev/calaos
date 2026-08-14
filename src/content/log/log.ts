@@ -8,6 +8,13 @@ import type { LogEntry } from '@/types/log'
  */
 export const log: LogEntry[] = [
   {
+    title: 'Doppelmoral',
+    text: 'Was darf ich, was andere nicht dürfen? Menschen nehmen sich das Recht zu lügen. Werden sie angelogen, explodiert die Bombe. Sie reden schlecht über ihren engsten Kreis. Dreht man den Spieß um, werden sie zur Zielscheibe: Cut. Erwarten Aufmerksamkeit. Eigeninitiative: Fehlanzeige. Ein Blick in den Spiegel. Blinde Flecken und Schwächen. Wie erkennen wir Doppelmoral bei uns selbst?',
+    date: '2026-08-14',
+    ort: 'Berlin',
+    tags: ['identität', 'beziehungen', 'verantwortung'],
+  },
+  {
     title: 'Konfrontation',
     text: 'Mein längster Freund zu Besuch. Vier Tage. Er kennt meine Morgenroutine. 6:30 Uhr. Wasser trinken. Zähne putzen. Kalte Dusche. Meditation. Stretching. Ich schließe die Augen. Plötzlich höre ich seine Stimme im Nebenraum. Sein Monolog über Baustellen. Meine Konzentration? Weg. Die Wut kommt hoch. Meine Gedanken rasen. „Keine Rücksicht. Egoistisch.“ Die Konfrontation außerhalb meiner Komfortzone. Verlustangst. Overthinking. Lieber alles ignorieren. Die Schuld bei mir suchen. Emotionen runterschlucken. Kindergarten. Eine Frage der Zeit, bis das Pulverfass explodiert. Also Augen zu und durch. Ein Gespräch. Konfrontation. Das Ergebnis? Seine Einsicht. Eine ehrliche Entschuldigung. Meine Wut entlädt sich. Die Angst vor der Konfrontation war unbegründet. Wie oft vermeiden wir Gespräche, weil wir Angst vor einer Reaktion haben, die am Ende gar nicht kommt? Wem geht\'s genauso?',
     date: '2026-08-10',
