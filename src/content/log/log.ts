@@ -8,6 +8,13 @@ import type { LogEntry } from '@/types/log'
  */
 export const log: LogEntry[] = [
   {
+    title: 'Kompromisslos',
+    text: 'Wer sich ein bisschen mit Biologie, Physik und Mathematik auseinandersetzt, wird feststellen: Wir alle sind ein Wunder. Das Leben ist ein Geschenk. Was bedeutet das für uns? Was bedeutet das für mich? Der Rahmen: kein Schaden für Lebewesen und ihre Umwelt. Kompromisslos zu meinen Gefühlen, meinen Grenzen, meinem Handeln und meiner Existenz stehen. Menschen, die mir und anderen schaden, ohne Kompromiss aussortieren. Kompromisslos meine Ziele und Träume verfolgen. Kompromisslos keine Zeit für Menschen, Dinge oder Aktivitäten aufwenden, die unglücklich machen. Kompromisslos aussortieren. Kompromisslos lieben. Das Gute kompromisslos verstärken. Ohne Kompromisse den Moment genießen. Meinen Lebensweg kompromisslos hinterfragen. Wieso? Weshalb? Warum? Kompromisslos weiter gehen. Die Vergangenheit kompromisslos hinter mir lassen. Sorgen aus der Zukunft kompromisslos hinter mir lassen. Leben.',
+    date: '2026-08-14',
+    ort: 'Berlin',
+    tags: ['identität', 'verantwortung', 'freiheit'],
+  },
+  {
     title: 'Doppelmoral',
     text: 'Was darf ich, was andere nicht dürfen? Menschen nehmen sich das Recht zu lügen. Werden sie angelogen, explodiert die Bombe. Sie reden schlecht über ihren engsten Kreis. Dreht man den Spieß um, werden sie zur Zielscheibe: Cut. Erwarten Aufmerksamkeit. Eigeninitiative: Fehlanzeige. Ein Blick in den Spiegel. Blinde Flecken und Schwächen. Wie erkennen wir Doppelmoral bei uns selbst?',
     date: '2026-08-14',
