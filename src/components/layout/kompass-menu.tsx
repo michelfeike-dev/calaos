@@ -11,9 +11,8 @@ const items = [
   { href: '/buecher', label: 'bücher' },
 ]
 
-/** Whether a nav item matches the current path (essay also owns the tag pages). */
+/** Whether a nav item matches the current path. */
 function isActive(href: string, pathname: string): boolean {
-  if (href === '/essay') return pathname === '/essay' || pathname.startsWith('/tag/')
   return pathname === href || pathname.startsWith(`${href}/`)
 }
 

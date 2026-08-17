@@ -1,12 +1,10 @@
 import type { MetadataRoute } from 'next'
-import { getAllPosts, getAllTags } from '@/lib/posts'
-import { tagToSlug } from '@/lib/utils'
+import { getAllPosts } from '@/lib/posts'
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://calaos.me'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts()
-  const tags = getAllTags()
 
   const now = new Date()
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -28,12 +26,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }))
 
-  const tagRoutes: MetadataRoute.Sitemap = tags.map((tag) => ({
-    url: `${BASE_URL}/tag/${tagToSlug(tag)}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly',
-    priority: 0.6,
-  }))
-
-  return [...staticRoutes, ...postRoutes, ...tagRoutes]
+  return [...staticRoutes, ...postRoutes]
 }
