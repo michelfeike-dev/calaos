@@ -51,6 +51,7 @@ const nextConfig: NextConfig = {
       { source: '/coach', destination: '/expedition', permanent: true },
       { source: '/mentor', destination: '/expedition', permanent: true },
       { source: '/blog', destination: '/essay', permanent: true },
+      { source: '/newsletter', destination: '/brief', permanent: true },
     ]
   },
 }

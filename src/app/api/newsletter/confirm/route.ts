@@ -5,7 +5,7 @@ import { CONFIRM_TOKEN_MAX_AGE_MS, verifyToken } from '@/lib/newsletter'
 export const runtime = 'nodejs'
 
 function redirect(request: Request, status: string) {
-  return NextResponse.redirect(new URL(`/newsletter?status=${status}`, request.url), 303)
+  return NextResponse.redirect(new URL(`/brief?status=${status}`, request.url), 303)
 }
 
 /**

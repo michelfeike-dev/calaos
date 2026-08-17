@@ -18,7 +18,7 @@ export default function HomePage() {
     <PillarsSection
       wide
       pillars={pillars}
-      cta={{ href: '/newsletter', text: 'zwischen erde und feuer entsteht freiheit.' }}
+      cta={{ href: '/brief', text: 'zwischen erde und feuer entsteht freiheit.' }}
     />
   )
 }
