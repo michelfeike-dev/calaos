@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
-import { getAllPosts, getAllTags, getFeaturedPost } from '@/lib/posts'
+import { getAllPosts, getFeaturedPost } from '@/lib/posts'
 import { PostCard } from '@/components/blog/post-card'
-import { TagFilter } from '@/components/blog/tag-filter'
 
 export const metadata: Metadata = {
   title: 'essay',
@@ -12,7 +11,6 @@ export const metadata: Metadata = {
 export default function EssayPage() {
   const allPosts = getAllPosts()
   const featuredPost = getFeaturedPost()
-  const allTags = getAllTags()
   const remainingPosts = featuredPost
     ? allPosts.filter((p) => p.slug !== featuredPost.slug)
     : allPosts
@@ -20,12 +18,10 @@ export default function EssayPage() {
   return (
     <div className="mx-auto max-w-5xl px-6 py-16">
 
-      {/* Tag filter */}
-      {allTags.length > 0 && (
-        <section className="mb-8">
-          <TagFilter tags={allTags} basePath="/essay" />
-        </section>
-      )}
+      {/* Subtitle */}
+      <p className="mb-12 text-center text-base text-white/40 sm:text-sm">
+        zeilen, die zwischen feuer und erde entstehen.
+      </p>
 
       {/* Featured post — full width */}
       {featuredPost && (

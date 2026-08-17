@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getAllBooks, getAllBookTags } from '@/lib/books'
+import { getAllBooks } from '@/lib/books'
 import { BooksBrowser } from '@/components/books/books-browser'
 
 export const metadata: Metadata = {
@@ -11,7 +11,14 @@ export const metadata: Metadata = {
 export default function BooksPage() {
   return (
     <div className="mx-auto max-w-5xl px-6 py-16">
-      <BooksBrowser books={getAllBooks()} tags={getAllBookTags()} />
+
+      {/* Subtitle */}
+      <p className="mb-12 text-center text-base text-white/40 sm:text-sm">
+        fremde gedanken. eigene wege.
+      </p>
+
+      <BooksBrowser books={getAllBooks()} />
+
     </div>
   )
 }
