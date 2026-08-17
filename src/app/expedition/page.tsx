@@ -1,20 +1,34 @@
 import type { Metadata } from 'next'
+import { getAllExpeditions } from '@/lib/expeditions'
+import { ExpeditionCard } from '@/components/expeditions/expedition-card'
 
 export const metadata: Metadata = {
   title: 'expedition',
-  description: 'Expedition — komm näher. lass uns sprechen.',
+  description: 'Expeditionen zwischen calma und chaos.',
   alternates: { canonical: '/expedition' },
 }
 
 export default function ExpeditionPage() {
+  const expeditions = getAllExpeditions()
+
   return (
-    <div className="flex flex-1 items-center justify-center px-6">
-      <a
-        href="mailto:expedition@calaos.me"
-        className="text-center text-base text-white/40 transition-colors duration-150 hover:text-blue-400 sm:text-sm"
-      >
+    <div className="mx-auto max-w-5xl px-6 py-16">
+
+      {/* Subtitle */}
+      <p className="mb-12 text-center text-base text-white/40 sm:text-sm">
         raus aus den fesseln. brennen. erden. leben.
-      </a>
+      </p>
+
+      {expeditions.length === 0 ? (
+        <p className="py-16 text-center text-sm text-white/30">noch keine Expeditionen.</p>
+      ) : (
+        <div className="grid gap-4 sm:grid-cols-2">
+          {expeditions.map((expedition) => (
+            <ExpeditionCard key={expedition.title} expedition={expedition} />
+          ))}
+        </div>
+      )}
+
     </div>
   )
 }
