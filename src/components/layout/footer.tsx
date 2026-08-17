@@ -5,9 +5,9 @@ import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 
 const links: { href: string; label: string; external?: boolean }[] = [
+  { href: '/about', label: 'about' },
   { href: '/brief', label: 'brief' },
   { href: 'https://www.instagram.com/calma_and_chaos/', label: 'instagram', external: true },
-  { href: '/about', label: 'über mich' },
   { href: '/datenschutz', label: 'datenschutz' },
   { href: '/impressum', label: 'impressum' },
 ]
