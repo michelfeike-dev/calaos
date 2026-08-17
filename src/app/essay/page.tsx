@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { getAllPosts, getFeaturedPost } from '@/lib/posts'
 import { PostCard } from '@/components/blog/post-card'
 
@@ -18,9 +19,14 @@ export default function EssayPage() {
   return (
     <div className="mx-auto max-w-5xl px-6 py-16">
 
-      {/* Subtitle */}
-      <p className="mb-12 text-center text-base text-white/40 sm:text-sm">
-        zeilen, die zwischen feuer und erde entstehen.
+      {/* Subtitle — links to the newsletter ("brief") page */}
+      <p className="mb-12 text-center">
+        <Link
+          href="/brief"
+          className="text-base text-white/40 transition-colors duration-150 hover:text-blue-400 sm:text-sm"
+        >
+          zeilen, die zwischen feuer und erde entstehen.
+        </Link>
       </p>
 
       {/* Featured post — full width */}

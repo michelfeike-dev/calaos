@@ -4,11 +4,12 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 
-const links = [
+const links: { href: string; label: string; external?: boolean }[] = [
+  { href: '/brief', label: 'brief' },
+  { href: 'https://www.instagram.com/calma_and_chaos/', label: 'instagram', external: true },
   { href: '/about', label: 'über mich' },
   { href: '/datenschutz', label: 'datenschutz' },
   { href: '/impressum', label: 'impressum' },
-  { href: '/newsletter', label: 'brief' },
 ]
 
 export function Footer() {
@@ -20,18 +21,30 @@ export function Footer() {
 
         <div className="flex flex-col items-center gap-6">
           <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3" aria-label="Footer navigation">
-            {links.map(({ href, label }) => (
-              <Link
-                key={href}
-                href={href}
-                className={cn(
-                  'text-xs transition-colors duration-150 hover:text-blue-400',
-                  pathname === href ? 'text-white' : 'text-white/30'
-                )}
-              >
-                {label}
-              </Link>
-            ))}
+            {links.map(({ href, label, external }) =>
+              external ? (
+                <a
+                  key={href}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-white/30 transition-colors duration-150 hover:text-blue-400"
+                >
+                  {label}
+                </a>
+              ) : (
+                <Link
+                  key={href}
+                  href={href}
+                  className={cn(
+                    'text-xs transition-colors duration-150 hover:text-blue-400',
+                    pathname === href ? 'text-white' : 'text-white/30'
+                  )}
+                >
+                  {label}
+                </Link>
+              )
+            )}
           </nav>
 
           <p className="text-xs text-white/20">
