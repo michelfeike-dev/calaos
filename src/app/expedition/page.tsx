@@ -13,7 +13,7 @@ export default function ExpeditionPage() {
         href="mailto:expedition@calaos.me"
         className="text-center text-base text-white/40 transition-colors duration-150 hover:text-blue-400 sm:text-sm"
       >
-        komm näher. lass uns sprechen.
+        raus aus den fesseln. brennen. erden. leben.
       </a>
     </div>
   )
