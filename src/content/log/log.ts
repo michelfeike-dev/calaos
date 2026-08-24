@@ -8,6 +8,13 @@ import type { LogEntry } from '@/types/log'
  */
 export const log: LogEntry[] = [
   {
+    title: 'Anicca',
+    text: 'Mein Ego treibt mich an. Höher, schneller, weiter, krasser. Geld. Status. Macht. Die Jagd nach dem Unerreichbaren. Beute erlegt? Zwanghaft die Kontrolle behalten. Gleichzeitig etwas Neues. Mehr, mehr, mehr. Craving erzeugt Leid. Die Lösung? Ein minimalistisches Leben. Dankbarkeit in den kleinen Momenten. Die Akzeptanz der Vergänglichkeit. Alles hat ein Ende. Wer darüber nachdenkt, wird entweder frei oder traurig. Alles Gute, alles Schlechte hat ein Ende. Die Sonne geht auf. Sie geht unter. Das Gewitter kommt und geht. Liebe kommt und geht. Freunde kommen und gehen. Status, Macht, Schönheit, Gesundheit, Trauer, Schmerz, Freude, Glück. Alles ist vergänglich. Etwas Altes geht. Neues kommt. Mein Versuch, das Gesetz zu akzeptieren, fällt mir schwer. Mein Dilemma zwischen Freud und Leid.',
+    date: '2026-08-21',
+    ort: 'Berlin',
+    tags: ['meditation', 'emotionen', 'freiheit'],
+  },
+  {
     title: 'Kompromisslos',
     text: 'Wer sich ein bisschen mit Biologie, Physik und Mathematik auseinandersetzt, wird feststellen: Wir alle sind ein Wunder. Das Leben ist ein Geschenk. Was bedeutet das für uns? Was bedeutet das für mich? Der Rahmen: kein Schaden für Lebewesen und ihre Umwelt. Kompromisslos zu meinen Gefühlen, meinen Grenzen, meinem Handeln und meiner Existenz stehen. Menschen, die mir und anderen schaden, ohne Kompromiss aussortieren. Kompromisslos meine Ziele und Träume verfolgen. Kompromisslos keine Zeit für Menschen, Dinge oder Aktivitäten aufwenden, die unglücklich machen. Kompromisslos aussortieren. Kompromisslos lieben. Das Gute kompromisslos verstärken. Ohne Kompromisse den Moment genießen. Meinen Lebensweg kompromisslos hinterfragen. Wieso? Weshalb? Warum? Kompromisslos weiter gehen. Die Vergangenheit kompromisslos hinter mir lassen. Sorgen aus der Zukunft kompromisslos hinter mir lassen. Leben.',
     date: '2026-08-14',
