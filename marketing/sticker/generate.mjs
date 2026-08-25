@@ -39,7 +39,7 @@ const versions = [
   { id: '3-calaos', wm: CALAOS },
 ]
 
-const CUT_W = 85.6, BLEED = 2, SAFE = 2
+const CUT_W = 86, BLEED = 2, SAFE = 2   // Schnittbreite 86 mm = 8,6 cm (StickerApp: 0,1-cm-Raster)
 const GAP = 3, URL_SIZE = 1.6, URL_CAP = 1.15
 const SANS = "'Helvetica Neue', Helvetica, Arial, sans-serif"
 const px = (mm) => Math.round((mm / 25.4) * 600)
@@ -54,10 +54,12 @@ for (const v of versions) {
   const wmH = v.wm.h * scale
   const wmX = (artW - wmW) / 2
   const bottom = v.url ? GAP + URL_CAP : 0
-  const safeH = wmH + bottom
-  const cutH = safeH + 2 * SAFE
-  const artH = safeH + 2 * SAFE + 2 * BLEED
-  const top = BLEED + SAFE
+  const contentH = wmH + bottom
+  const cutH = Math.ceil(contentH + 2 * SAFE)   // auf ganze mm aufrunden → als 0,1 cm eingebbar
+  const artH = cutH + 2 * BLEED
+  const pad = (cutH - (contentH + 2 * SAFE)) / 2 // Aufrundung symmetrisch verteilen (Logo bleibt zentriert)
+  const top = BLEED + SAFE + pad
+  const safeH = cutH - 2 * SAFE                  // tatsächlicher Sicherheitsbereich
 
   let extra = ''
   if (v.url) {
@@ -81,5 +83,5 @@ for (const v of versions) {
   const ov = await sharp(Buffer.from(overlay), { density: 600 }).resize(1400).png().toBuffer()
   await sharp(base).composite([{ input: ov }]).png().toFile(join(OUT, `${v.id}_proof.png`))
 
-  console.log(`${v.id}: ${cutW.toFixed(1)} × ${cutH.toFixed(1)} mm  ·  ${px(artW)}×${px(artH)} px`)
+  console.log(`${v.id}: ${cutW} × ${cutH} mm  (${(cutW / 10).toFixed(1)} × ${(cutH / 10).toFixed(1)} cm)  ·  ${px(artW)}×${px(artH)} px`)
 }
