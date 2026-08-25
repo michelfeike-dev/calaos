@@ -8,6 +8,13 @@ import type { LogEntry } from '@/types/log'
  */
 export const log: LogEntry[] = [
   {
+    title: 'Zufall?',
+    text: 'Ausnahmesituation in Berlin. Die Sonne scheint. Schwarztee. Meine Gedanken in Nepal. Vipassana. Plötzlich erregt ein Schuh in meinem Augenwinkel meine Aufmerksamkeit. Seit längerem habe ich ihn im Visier. Erst komme ich nicht so wirklich aus dem Arsch. Dann: „Bist du zufrieden mit dem Schuh?“ Sie liebt ihn. Schwärmt. Überzeugt mich. Sie hört nicht auf zu reden. Ich merke meine Unsicherheit. Nervosität. Spiele mit meinen Fingern. Etwas fühlt sich komisch an. Ich bin unsicher. Verkrampfe. „Scheiß drauf. Vertrau ihr.“ Mein Vorhang fällt. Ich höre nicht mehr auf zu reden. Zwei Wasserfälle prallen aufeinander. Wir verstehen uns. Sie setzt sich zu mir. Bla Bla Bla Bla Bla. Ich spüre Wärme. Offenheit. Humor. Feuer. Ela é brasileira. Da ist es wieder. Mein Heimweh nach Brasilien. Seit Monaten wiederholen sich diese Begegnungen. Zufall?',
+    date: '2026-08-25',
+    ort: 'Berlin',
+    tags: ['beziehungen', 'emotionen', 'reisen'],
+  },
+  {
     title: 'Anicca',
     text: 'Mein Ego treibt mich an. Höher, schneller, weiter, krasser. Geld. Status. Macht. Die Jagd nach dem Unerreichbaren. Beute erlegt? Zwanghaft die Kontrolle behalten. Gleichzeitig etwas Neues. Mehr, mehr, mehr. Craving erzeugt Leid. Die Lösung? Ein minimalistisches Leben. Dankbarkeit in den kleinen Momenten. Die Akzeptanz der Vergänglichkeit. Alles hat ein Ende. Wer darüber nachdenkt, wird entweder frei oder traurig. Alles Gute, alles Schlechte hat ein Ende. Die Sonne geht auf. Sie geht unter. Das Gewitter kommt und geht. Liebe kommt und geht. Freunde kommen und gehen. Status, Macht, Schönheit, Gesundheit, Trauer, Schmerz, Freude, Glück. Alles ist vergänglich. Etwas Altes geht. Neues kommt. Mein Versuch, das Gesetz zu akzeptieren, fällt mir schwer. Mein Dilemma zwischen Freud und Leid.',
     date: '2026-08-21',
