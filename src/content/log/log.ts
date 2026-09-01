@@ -8,6 +8,13 @@ import type { LogEntry } from '@/types/log'
  */
 export const log: LogEntry[] = [
   {
+    title: 'Die Hintertür',
+    text: 'Die Angst vor dem Verlust. Davor, ausgenutzt und verletzt zu werden. Von der falschen Partnerin. Den falschen Freunden. Kein Vertrauen in meine Selbstverteidigung. In meine Fähigkeit, Grenzen zu setzen. Erfahrungen, die sich in meine Amygdala eingebrannt haben. Narben. Prägungen. Wörter, die nicht meine sind. „Sie lügt dich an. Er nutzt dich aus. Sie wollen dir etwas Böses.“ Sie begleiten mich. Isolation. Sie bremsen mich. Kein Vertrauen. Wozu klammere ich mich an sie? Selbstschutz? Die Versuche meiner Psyche, mich klein zu halten. Oder vielleicht nur, mich vor dem Unbekannten zu schützen. Vorwände, die mich einsperren. Die Hintertür. Der einfache Weg. Schluss. Der Zeitpunkt, die Stimmen nicht mehr entscheiden zu lassen. Verantwortung übernehmen. Mich vom Geschehenen lösen. Loslassen. Daraus lernen. Wachstum. Das Risiko eingehen. Die Masken fallen lassen. Die Mauer einreißen. Neue Menschen. Neue Chancen. Das Negative langsam mit Positivem überschreiben.',
+    date: '2026-09-01',
+    ort: 'Berlin',
+    tags: ['beziehungen', 'emotionen', 'verantwortung'],
+  },
+  {
     title: 'Zufall?',
     text: 'Ausnahmesituation in Berlin. Die Sonne scheint. Schwarztee. Meine Gedanken in Nepal. Vipassana. Plötzlich erregt ein Schuh in meinem Augenwinkel meine Aufmerksamkeit. Seit längerem habe ich ihn im Visier. Erst komme ich nicht so wirklich aus dem Arsch. Dann: „Bist du zufrieden mit dem Schuh?“ Sie liebt ihn. Schwärmt. Überzeugt mich. Sie hört nicht auf zu reden. Ich merke meine Unsicherheit. Nervosität. Spiele mit meinen Fingern. Etwas fühlt sich komisch an. Ich bin unsicher. Verkrampfe. „Scheiß drauf. Vertrau ihr.“ Mein Vorhang fällt. Ich höre nicht mehr auf zu reden. Zwei Wasserfälle prallen aufeinander. Wir verstehen uns. Sie setzt sich zu mir. Bla Bla Bla Bla Bla. Ich spüre Wärme. Offenheit. Humor. Feuer. Ela é brasileira. Da ist es wieder. Mein Heimweh nach Brasilien. Seit Monaten wiederholen sich diese Begegnungen. Zufall?',
     date: '2026-08-25',
