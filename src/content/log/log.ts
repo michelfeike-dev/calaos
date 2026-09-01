@@ -8,6 +8,13 @@ import type { LogEntry } from '@/types/log'
  */
 export const log: LogEntry[] = [
   {
+    title: 'Der Preis der Freiheit',
+    text: 'Ein freies Leben in Unsicherheit. Kein Tag wie der andere. Keine Fesseln. Die eigenen Ziele verfolgen. Meine Träume erfüllen. Dennoch. Die Angst, dass die finanziellen Mittel nicht reichen. Dass das Business hopps geht. Dass ich Jahre verschwende. Einsame Nächte in fremden Ländern. Fremde Kulturen. Zweifel über die Zukunft. Die Gesundheit im Alter. Das System verlassen. Den Mainstream. Größtenteils auf sich allein gestellt sein. Eigenverantwortung übernehmen. Frei sein. Der Preis für ein Leben ohne Fesseln? Freiheit ist nicht kostenlos.',
+    date: '2026-09-01',
+    ort: 'Berlin',
+    tags: ['freiheit', 'chaos', 'verantwortung'],
+  },
+  {
     title: 'Die Hintertür',
     text: 'Die Angst vor dem Verlust. Davor, ausgenutzt und verletzt zu werden. Von der falschen Partnerin. Den falschen Freunden. Kein Vertrauen in meine Selbstverteidigung. In meine Fähigkeit, Grenzen zu setzen. Erfahrungen, die sich in meine Amygdala eingebrannt haben. Narben. Prägungen. Wörter, die nicht meine sind. „Sie lügt dich an. Er nutzt dich aus. Sie wollen dir etwas Böses.“ Sie begleiten mich. Isolation. Sie bremsen mich. Kein Vertrauen. Wozu klammere ich mich an sie? Selbstschutz? Die Versuche meiner Psyche, mich klein zu halten. Oder vielleicht nur, mich vor dem Unbekannten zu schützen. Vorwände, die mich einsperren. Die Hintertür. Der einfache Weg. Schluss. Der Zeitpunkt, die Stimmen nicht mehr entscheiden zu lassen. Verantwortung übernehmen. Mich vom Geschehenen lösen. Loslassen. Daraus lernen. Wachstum. Das Risiko eingehen. Die Masken fallen lassen. Die Mauer einreißen. Neue Menschen. Neue Chancen. Das Negative langsam mit Positivem überschreiben.',
     date: '2026-09-01',
