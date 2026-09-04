@@ -74,12 +74,13 @@ for (const v of versions) {
 
   await sharp(Buffer.from(svg), { density: 600 })
     .resize(px(artW), px(artH))
+    .flatten({ background: '#141414' }) // opake Fläche bis in den Beschnitt (kein Alpha-Saum)
     .png()
     .withMetadata({ density: 600 })
     .toFile(join(OUT, `${v.id}_print_600dpi.png`))
 
   const overlay = `<svg xmlns="http://www.w3.org/2000/svg" width="${artW.toFixed(3)}mm" height="${artH.toFixed(3)}mm" viewBox="0 0 ${artW.toFixed(3)} ${artH.toFixed(3)}"><rect x="${BLEED}" y="${BLEED}" width="${cutW.toFixed(3)}" height="${cutH.toFixed(3)}" fill="none" stroke="#ff2d95" stroke-width="0.25" stroke-dasharray="1.2 0.8"/><rect x="${BLEED + SAFE}" y="${BLEED + SAFE}" width="${safeW.toFixed(3)}" height="${safeH.toFixed(3)}" fill="none" stroke="#22d3ee" stroke-width="0.2" stroke-dasharray="0.8 0.8"/></svg>`
-  const base = await sharp(Buffer.from(svg), { density: 600 }).resize(1400).png().toBuffer()
+  const base = await sharp(Buffer.from(svg), { density: 600 }).resize(1400).flatten({ background: '#141414' }).png().toBuffer()
   const ov = await sharp(Buffer.from(overlay), { density: 600 }).resize(1400).png().toBuffer()
   await sharp(base).composite([{ input: ov }]).png().toFile(join(OUT, `${v.id}_proof.png`))
 
