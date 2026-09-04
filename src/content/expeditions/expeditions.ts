@@ -12,7 +12,7 @@ export const expeditions: Expedition[] = [
   },
   {
     title: '02 - Detox',
-    text: 'Ein Blick in den Spiegel. Thriller. Die Erinnerungen an die letzten Wochen und Monate: Termine, Termine, Termine. Das Cortisol steht mir bis zur Hüfte. Mein Nervensystem am Anschlag. Die Verpflichtungen wachsen mir über die Ohren, die Partys am Wochenende schon aus den Ohren. Die Routine zieht die Spaßbremse fester und fester. Gefesselt. Atemnot. Kompensation hier. Flucht da. Mein Feed raubt mir meine Zeit. Mein Selbstwert im Außen. Herzlichen Glückwunsch. Es wird Zeit, mal wieder den Stecker zu ziehen. Goodbye Zivilisation. Ciao Fesseln. Hola Mutter Natur. Gemeinsam entspannen. Den Dreck rausschwitzen. Ein paar Tage am See? Holz sammeln. Feuer machen. Essen zubereiten. Danach das Gespräch am Lagerfeuer. Klingelt\'s bei dir? Meld dich doch.',
+    text: 'Ein Blick in den Spiegel. Thriller. Die Erinnerungen an die letzten Wochen: Termine. Das Cortisol steht mir bis zur Hüfte. Mein Nervensystem am Anschlag. Die Verpflichtungen wachsen über meine Ohren, die Partys aus den Ohren. Die Routine zieht die Spaßbremse immer fester. Gefesselt. Atemnot. Kompensation hier. Flucht da. Mein Feed raubt mir meine Zeit. Mein Selbstwert im Außen. Herzlichen Glückwunsch. Zeit, mal wieder den Stecker zu ziehen. Goodbye Zivilisation. Ciao Fesseln. Hola Mutter Natur. Gemeinsam entspannen. Schwitzen. Ein paar Tage am See? Holz sammeln. Feuer machen. Essen beschaffen. Danach das Gespräch am Lagerfeuer. Klingelt\'s bei dir?',
     ort: 'Skandinavien',
   },
 ]

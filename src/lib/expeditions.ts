@@ -1,4 +1,4 @@
-import { expeditions } from '@/content/expeditions'
+import { expeditions } from '@/content/expeditions/expeditions'
 import type { Expedition } from '@/types/expedition'
 
 /** All expeditions with defaults applied (ort → "weltweit", date → "tbd", url → mailto). */
