@@ -1,4 +1,4 @@
-import { books } from '@/content/books'
+import { books } from '@/content/books/books'
 import type { Book } from '@/types/book'
 
 export function getAllBooks(): Book[] {
