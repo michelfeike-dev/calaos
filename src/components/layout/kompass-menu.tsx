@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { Bookmark } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const items = [
@@ -51,13 +52,14 @@ export function KompassMenu() {
         type="button"
         aria-haspopup="menu"
         aria-expanded={open}
+        aria-label="kompass"
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          'text-sm font-medium tracking-wide transition-colors duration-150',
+          'flex items-center transition-colors duration-150',
           active ? 'text-white' : 'text-white/40 hover:text-blue-400'
         )}
       >
-        kompass
+        <Bookmark size={20} strokeWidth={2} aria-hidden="true" />
       </button>
 
       {/* Panel — small bridge (pt-3) keeps hover alive between trigger and menu */}

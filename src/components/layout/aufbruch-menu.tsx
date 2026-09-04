@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { Play } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const items = [{ href: '/expedition', label: 'expedition' }]
@@ -46,13 +47,14 @@ export function AufbruchMenu() {
         type="button"
         aria-haspopup="menu"
         aria-expanded={open}
+        aria-label="aufbruch"
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          'text-sm font-medium tracking-wide transition-colors duration-150',
+          'flex items-center transition-colors duration-150',
           active ? 'text-white' : 'text-white/40 hover:text-blue-400'
         )}
       >
-        aufbruch
+        <Play size={20} strokeWidth={2} aria-hidden="true" />
       </button>
 
       {/* Panel — small bridge (pt-3) keeps hover alive between trigger and menu */}
