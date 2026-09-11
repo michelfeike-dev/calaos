@@ -187,12 +187,12 @@
 </main>
 
 <script>
-  const KEY = "calaos-finance-v4";
+  const KEY = "calaos-finance-v6";
   const nf = new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR", minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  const PH = {"inc": ["Gehalt / Lohn", "Nebeneinkommen", "Kapitalertr\u00e4ge (Zinsen, Dividenden)", "Mieteinnahmen", "Erstattungen / Zusch\u00fcsse"], "exp": ["Wohnen (Miete, Nebenkosten)", "Lebensmittel", "Versicherungen", "Mobilit\u00e4t (Auto, \u00d6PNV)", "Abos & Vertr\u00e4ge (Handy, Internet, Streaming)", "Freizeit & Essen gehen", "Gesundheit", "Kleidung"], "inv": ["Notgroschen / R\u00fccklage", "ETF / Aktien", "Altersvorsorge", "Weiterbildung"], "deb": ["Tilgung / Ratenkredit", "Kreditkarte / Dispo", "Immobilien- / Autokredit", "BAf\u00f6G / Studienkredit", "Privatdarlehen"]};
+  const PH = {"inc": ["Gehalt / Lohn", "Nebeneinkommen", "Erstattungen / Zusch\u00fcsse", "Kapitalertr\u00e4ge (Zinsen, Dividenden)", "Mieteinnahmen"], "exp": ["Wohnen (Miete, Nebenkosten)", "Lebensmittel", "Versicherungen", "Mobilit\u00e4t (Auto, \u00d6PNV)", "Abos & Vertr\u00e4ge (Handy, Internet, Streaming)", "Freizeit & Essen gehen", "Gesundheit", "Kleidung"], "inv": ["Notgroschen / R\u00fccklage", "ETF / Aktien", "Altersvorsorge", "Weiterbildung"], "deb": ["Tilgung / Ratenkredit", "Kreditkarte / Dispo", "Immobilien- / Autokredit", "BAf\u00f6G / Studienkredit", "Privatdarlehen"]};
 
   const SECTIONS = [
-    { key: "inc", title: "Einnahmen", base: 2 },
+    { key: "inc", title: "Einnahmen", base: 5 },
     { key: "exp", title: "Ausgaben", base: 6 },
     { key: "inv", title: "Investitionen", base: 4 },
     { key: "deb", title: "Schulden", base: 3 },
