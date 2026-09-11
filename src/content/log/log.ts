@@ -8,6 +8,13 @@ import type { LogEntry } from '@/types/log'
  */
 export const log: LogEntry[] = [
   {
+    title: 'Der perfekte Mann',
+    text: 'In meinem Kopf. Das Vorbild. Das Ideal … Der eiskalte Krieger. Keine Schmerzen. Der Verführer. Der Frauenheld. An seiner Seite: unendlich viele Schönheiten. Der König. Der Anführer. Ruhm. Ehre. „Warte mal. Das ist unrealistisch.“ Woher kommt dieses unrealistische Bild von Männlichkeit? Es gleicht einer traditionellen Rolle aus dem Mittelalter. Einem falsch interpretierten Spiegelbild unserer Leistungsgesellschaft. Ein Mann aus einem Hollywoodfilm. James Bond. Gladiator. 300. Die Verkörperung von Stärke. Beginnt wahre Stärke, zu seinen Gefühlen zu stehen? Die unangenehmen Emotionen auszuhalten? Gehört Schmerzen zu ertragen, Risiko, und Disziplin dazu? Hört Stärke auf dem Schlachtfeld auf?',
+    date: '2026-09-09',
+    ort: 'Berlin',
+    tags: ['männlichkeit', 'identität', 'emotionen'],
+  },
+  {
     title: 'Der Preis der Freiheit',
     text: 'Ein freies Leben in Unsicherheit. Kein Tag wie der andere. Keine Fesseln. Die eigenen Ziele verfolgen. Meine Träume erfüllen. Dennoch. Die Angst, dass die finanziellen Mittel nicht reichen. Dass das Business hopps geht. Dass ich Jahre verschwende. Einsame Nächte in fremden Ländern. Fremde Kulturen. Zweifel über die Zukunft. Die Gesundheit im Alter. Das System verlassen. Den Mainstream. Größtenteils auf sich allein gestellt sein. Eigenverantwortung übernehmen. Frei sein. Der Preis für ein Leben ohne Fesseln? Freiheit ist nicht kostenlos.',
     date: '2026-09-01',
