@@ -8,6 +8,13 @@ import type { LogEntry } from '@/types/log'
  */
 export const log: LogEntry[] = [
   {
+    title: 'Angriffsmodus',
+    text: 'Wie wirkt mein falsches Bild von Männlichkeit auf andere? Die Jagd nach der wahren Liebe. Der schönsten Frau der Welt. Unzählige gebrochene Herzen. Liebeskummer. Der Beweis, stark zu sein. Vergleiche mit meinesgleichen. Konkurrenz. Aggression. Angriffsmodus. Druck. Die Gier nach Macht und Status. Leistungsdruck. Burnout. Der Weg da raus? Kompensation. Sport. Frauen. Erfolg. Ein Teufelskreis. Die Lösung? Fehler eingestehen. Aufrichtig entschuldigen. Lernen. Die Waffen abbauen. Mauern einreißen. Vertrauen und Beziehungen aufbauen. Mir selbst verzeihen.',
+    date: '2026-09-12',
+    ort: 'Berlin',
+    tags: ['männlichkeit', 'beziehungen', 'selbstwert'],
+  },
+  {
     title: 'Der perfekte Mann',
     text: 'In meinem Kopf. Das Vorbild. Das Ideal … Der eiskalte Krieger. Keine Schmerzen. Der Verführer. Der Frauenheld. An seiner Seite: unendlich viele Schönheiten. Der König. Der Anführer. Ruhm. Ehre. „Warte mal. Das ist unrealistisch.“ Woher kommt dieses unrealistische Bild von Männlichkeit? Es gleicht einer traditionellen Rolle aus dem Mittelalter. Einem falsch interpretierten Spiegelbild unserer Leistungsgesellschaft. Ein Mann aus einem Hollywoodfilm. James Bond. Gladiator. 300. Die Verkörperung von Stärke. Beginnt wahre Stärke, zu seinen Gefühlen zu stehen? Die unangenehmen Emotionen auszuhalten? Gehört Schmerzen zu ertragen, Risiko, und Disziplin dazu? Hört Stärke auf dem Schlachtfeld auf?',
     date: '2026-09-09',
